@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link th:href="@{'/stylesheets/application.css'}" rel="stylesheet"/>
+    <link th:href="@{'/bootstrap-3.3.7-dist/css/bootstrap.css'}" rel="stylesheet"/>
+    <script th:src="@{'/javascript/jquery-3.3.1.min.js'}"></script>
+    <script th:src="@{'/bootstrap-3.3.7-dist/js/bootstrap.js'}"></script>
+
+</head>
+<body>
+<header th:insert="layouts/common.html :: header"></header>
+<div class="dashboard-section">
+    <div class="row">
+        <div class="col-lg-9 col-md-9 recognise">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <img th:src="@{'/images/star.png'}" alt="">
+                    <h3>Recognize Newer</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+
+                        <form action="#" method="post">
+
+                            <div class="col-lg-4 col-md-4">
+                                <input type="text" class="select-newer"
+                                       placeholder="Select a Newer"
+                                       required="required" id="newer" autocomplete="off">
+
+                                <span class="select-newer" autocomplete="off">
+                                  <img th:src="@{'/images/newer.png'}" alt="">
+                                </span>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                        Select a Badge
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <a class="dropdown-item" th:href="@{'#'}">
+                                                <img th:src="@{'/images/goldstar.png'}" alt="">
+                                                Gold
+                                                <span>
+                                            <i class="user-gold-badge">2</i>
+                                            </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" th:href="@{'#'}">
+                                                <img th:src="@{'/images/silverstar.png'}" alt="">
+                                                Silver
+                                                <span>
+                                                <i class="user-gold-badge">4</i>
+                                            </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" th:href="@{'#'}">
+                                                <img th:src="@{'/images/bronzestar.png'}" alt="">
+                                                Bronze
+                                                <span>
+                                                <i class="user-gold-badge">6</i>
+                                            </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 ">
+
+                                <select class="form-control" required="required" name="karma" id="karma">
+                                    <option value="">Select a Karma/Core Value</option>
+                                    <option value="6">Karma: Extra Miler</option>
+                                    <option value="3">Karma: Knowledge Sharing</option>
+                                    <option value="1">Karma: Mentorship</option>
+                                    <option value="5">Karma: Pat on the back</option>
+                                    <option value="7">Karma: Customer Delight</option>
+                                    <option value="10">Core Value: Continuous Learning and Improvement</option>
+                                    <option value="9">Core Value: Contribution</option>
+                                    <option value="13">Core Value: Diligence</option>
+                                    <option value="12">Core Value: Empathy</option>
+                                    <option value="14">Core Value: Openness to Feedback and Change</option>
+                                    <option value="11">Core Value: Responsible Freedom</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group col-lg-12 col-md-12 karma-description">
+                                <label for="comment">Reason:</label>
+                                <textarea class="form-control" rows="5" id="comment">
+                                    Please select a karma/core value first.....
+                                </textarea>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Recognize</button>
+                    </div>
+
+                    <!--<input class="btn btn-primary" type="submit" name="submit" value="Recognize" class="recognize" id="submit">-->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 mybadge">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <img th:src="@{'/images/star.png'}" alt="">
+                    <h3>My Badges</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="badge-content" >
+                        <div class="badge-content-left">
+                            <img th:src="@{'/images/person.png'}" alt="">
+                        </div>
+
+                        <div class="badge-content-right">
+                            <h4 id="mybadge"><a href="#" class="newer_board_user" data-renderedthrough="rightPanel">Manisha
+                                Goyal
+                            </a></h4>
+                            <span>
+                            <img th:src="@{'/images/goldstar.png'}" alt="">
+                            <i>0</i>
+                        </span>
+                            <span>
+                            <img th:src="@{'/images/silverstar.png'}" alt="">
+                            <i>0</i>
+                         </span>
+                            <span>
+                            <img th:src="@{'/images/bronzestar.png'}" alt="">
+                            <i>0</i>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+
+<footer th:insert="layouts/common.html :: footer"></footer>
+</body>
+</html>

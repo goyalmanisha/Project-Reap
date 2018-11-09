@@ -1,0 +1,137 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/*Header Section */
+.container-fluid {
+    width: 100%;
+}
+
+.container-fluid form {
+    float: right !important;
+    width: 45%;
+    margin-top: 16px;
+}
+
+/*.container-fluid form .user-logo {*/
+    /*margin-top: 20%;*/
+/*}*/
+.container-fluid form .user-logo span {
+    margin-top: 1%;
+    height: 20%;
+    color: white;
+    float: right;
+}
+
+.navbar-brand {
+    display: flex;
+    margin-top: 1%;
+}
+
+.navbar-brand img {
+    height: 155%;
+}
+
+#header form .btn:hover {
+    text-decoration-style: solid;
+    color: red;
+    background-color: white;
+}
+
+/*Header Logout*/
+#logout-button{
+    float: right;
+    margin-top:0%;
+}
+
+
+
+/*Middle Section*/
+
+#banner {
+    background-image: url("/images/backgroundLock.jpg");
+    height: 700px;
+    background-size: 100% 100%;
+    position: relative;
+    text-align: center;
+    /*margin-bottom: 50px;*/
+}
+
+#banner .container {
+    position: absolute;
+    bottom: 428px;
+    margin-left: -150px;
+    display: flex;
+    justify-content: space-around;
+    /* left: 50%; */
+}
+
+.modal-body span {
+    color: red;
+}
+
+/*Footer Section*/
+
+footer {
+    background-color: black;
+}
+
+.py-3 h4 {
+    color: white;
+}
+
+/*User dashboard*/
+
+.dashboard-section {
+    background-color: whitesmoke;
+}
+.panel-heading{
+    display: flex;
+    padding: 0%;
+}
+.panel-heading img{
+    width: 4%;
+    margin-left: 1%;
+}
+.panel-heading h3{
+    margin-left: 1%;
+}
+.recognise{
+    margin-left: 1%;
+}
+.dropdown-menu li:hover{
+    background-color: #2aabd2;
+    text-decoration-color: white;
+}
+.select-newer{
+    padding: 1%;
+    width: 70%;
+}
+.select-newer img{
+    margin-right: 1%;
+    float: left;
+    margin-top: 2%;
+}
+.karma-description{
+    margin-top: 1%;
+}
+.badge-content-left img{
+    width: 100%;
+    height: 100%;
+    max-width: 100px;
+}
+.mybadge .panel{
+    width:135%;
+}
+.badge-content{
+    display: flex;
+    margin: 0px;
+}
+.badge-content-right{
+    float:right;
+}
+.badge-content-right img{
+    margin-top: 0%;
+    margin-left: 37%;
+}
