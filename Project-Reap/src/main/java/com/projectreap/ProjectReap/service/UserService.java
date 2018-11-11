@@ -6,13 +6,15 @@ import com.projectreap.ProjectReap.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpSession;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
+
+    public static final String[] ROLE_USER =new String[]{"USER","user"};
 
     @Autowired
     UserRepository userRepository;
@@ -23,7 +25,7 @@ public class UserService {
     public User update(User user) {
         Iterator<User> iterator = userRepository.findAll().iterator();
         if (iterator.hasNext()) {
-            user.setRole(Role.USER);
+            user.setRole(Role.USER.getValue());
             userRepository.save(user);
         }
         else {
@@ -40,8 +42,23 @@ public class UserService {
         return userRepository.getEmail(email);
     }
 
-    public Optional<User> findUserByResetToken(String resetToken){
-        return userRepository.findByResetToken(resetToken);
+     public List<User> getAllUsers(){
+       return userRepository.getUsersByRole(Role.USER);
     }
 
+    @Transactional
+    public Integer  getPasswordById(int id){
+        return userRepository.getById(id);
+    }
+
+    public List<User> getUsersFirstName(String firstname){
+        return userRepository.findByFirstName(firstname);
+    }
+
+    /*
+    * Method to fetch all the users
+    * */
+    public List<User> getAllUserList(){
+        return userRepository.getUsers();
+    }
 }

@@ -12,7 +12,14 @@
 </head>
 <body>
 <header th:insert="layouts/common.html :: header"></header>
+<div class="admin-dashboard-section">
         This is admin dashboard.
+        <br>
+        <h3>Click this to see the users</h3>
+        <a th:href="@{/admin/users}" class="btn btn-success">Userlist</a>
+
+</div>
+
 <footer th:insert="layouts/common.html :: footer"></footer>
 </body>
 </html>

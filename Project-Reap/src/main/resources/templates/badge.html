@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{'/stylesheets/application.css'}"/>
+    <link th:href="@{'/bootstrap-3.3.7-dist/css/bootstrap.css'}" rel="stylesheet"/>
+    <script th:src="@{'/javascript/jquery-3.3.1.min.js'}"></script>
+    <script th:src="@{'/bootstrap-3.3.7-dist/js/bootstrap.js'}"></script>
+
+</head>
+<body>
+<header th:insert="layouts/common.html :: header"></header>
+<div class="badge-board">
+    <div class="col-lg-4 col-md-4 mybadge">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <img th:src="@{'/images/star.png'}" alt="">
+                <h3>My Badges</h3>
+            </div>
+            <div class="panel-body">
+                <div class="badge-content" >
+                    <div class="badge-content-left">
+                        <img th:src="@{'/images/person.png'}" alt="">
+                    </div>
+
+                    <div class="badge-content-right">
+                        <table>
+                            <tr th:each="user, iterStat:${currentUser}" style="color: palevioletred;font-size: 25px">
+                                <td th:text="${user.firstName}"></td>
+                                <td th:text="${user.lastName}"></td>
+                            </tr>
+                        </table>
+                        <span>
+                            <img th:src="@{'/images/goldstar.png'}" alt="">
+                            <i>0</i>
+                        </span>
+                        <span>
+                            <img th:src="@{'/images/silverstar.png'}" alt="">
+                            <i>0</i>
+                         </span>
+                        <span>
+                            <img th:src="@{'/images/bronzestar.png'}" alt="">
+                            <i>0</i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,11 +1,14 @@
 package com.projectreap.ProjectReap.entity;
 
+import com.projectreap.ProjectReap.enums.Badge;
 import com.projectreap.ProjectReap.enums.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -33,11 +36,11 @@ public class User {
     private String password;
 
 //    @NotNull
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    //@Enumerated(EnumType.STRING)
+    private String  role;
 
-    private String resetToken;
-
+    @ElementCollection
+    List<Badge> badges=new ArrayList<>();
 
 
     public User() {
@@ -99,20 +102,20 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
+    public String  getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String  role) {
         this.role = role;
     }
 
-    public String getResetToken() {
-        return resetToken;
+    public List<Badge> getBadges() {
+        return badges;
     }
 
-    public void setResetToken(String resetToken) {
-        this.resetToken = resetToken;
+    public void setBadges(List<Badge> badges) {
+        this.badges = badges;
     }
 
     @Override
@@ -124,7 +127,6 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", resetToken='" + resetToken + '\'' +
                 '}';
     }
 }

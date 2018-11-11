@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>UserList</title>
+    <link th:href="@{'/stylesheets/application.css'}" rel="stylesheet"/>
+    <link th:href="@{'/bootstrap-3.3.7-dist/css/bootstrap.css'}" rel="stylesheet"/>
+    <script th:src="@{'/javascript/jquery-3.3.1.min.js'}"></script>
+    <script th:src="@{'/bootstrap-3.3.7-dist/js/bootstrap.js'}"></script>
+
+</head>
+<body>
+<header th:insert="layouts/common.html :: header"></header>
+
+<div id="users">
+
+    <table th:cellpadding="20px" th:cellspacing="20px" th:border="solid">
+        <tr>
+            <th>User Id</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>UserName</th>
+            <th>Role</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="user, iterStat:${userList}"  th:style="${iterStat.odd}? 'background: #f0f0f2;' : 'background: #ffffff;'">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.role}"></td>
+            <td th:text="${user.email}"></td>
+        </tr>
+
+        <!--TODO:
+        Create an ENUM with values USER, ADMIN, SUPER_ADMIN and iterate it to show a custom message to users basis on the ENUM value
+        -->
+        <!--<select>-->
+            <!--<option th:each="role: ${T(com.projectreap.ProjectReap.enums.Role).valueOf()}"-->
+                    <!--th:value="${role.getValue()}" th:text="${role.getValue()}">-->
+            <!--</option>-->
+        <!--</select>-->
+    </table>
+
+
+</div>
+<footer th:insert="layouts/common.html :: footer"></footer>
+</body>
+</html>

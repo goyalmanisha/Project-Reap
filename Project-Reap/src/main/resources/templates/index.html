@@ -21,7 +21,7 @@
     <div class="middle-section">
 
         <div id="banner">
-            <!--Showing the login alerts-->
+            <!--Showing the alerts-->
             <div class="col-md-7">
                 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
             </div>
@@ -96,7 +96,7 @@
 
                                                 <div class="modal-footer">
                                                     <div class="form-group">
-                                                        <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#forgotPassword">Forgot
+                                                        <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#forgotPassword" id="forgot-password-section">Forgot
                                                         <!--<a href="#" data-dismiss="modal"  data-toggle="modal" data-target="#forgotPassword">Forgot-->
                                                             Password</a>
                                                         <button type="submit" id="submitForm" class="btn btn-primary">Sign In</button>
@@ -253,9 +253,9 @@
                                     <div class="panel-body">
                                         <form class="form-horizontal" th:action="@{'/forgot'}"  autocomplete="on" th:Object="${user}" method="post">
                                             <div class="form-group">
-                                                <label class="control-label col-sm-2" for="email-pwd">Email:</label>
+                                                <label class="control-label col-sm-2" for="email-forgot">Email:</label>
                                                 <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="email-pwd" th:field="*{email}" required>
+                                                    <input type="email" class="form-control" id="email-forgot" th:field="*{email}" required>
                                                 </div>
                                             </div>
 
@@ -264,6 +264,7 @@
                                 <div class="form-group">
 
                                     <button type="submit" class="btn btn-primary">Send Password</button>
+                                    <!--<a th:href="@{/forgot}" class="btn btn-primary">Send Password</a>-->
 
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 

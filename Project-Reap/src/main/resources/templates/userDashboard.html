@@ -6,11 +6,14 @@
     <link th:href="@{'/stylesheets/application.css'}" rel="stylesheet"/>
     <link th:href="@{'/bootstrap-3.3.7-dist/css/bootstrap.css'}" rel="stylesheet"/>
     <script th:src="@{'/javascript/jquery-3.3.1.min.js'}"></script>
+    <script th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+    <script th:src="@{'/javascript/application.js'}"></script>
     <script th:src="@{'/bootstrap-3.3.7-dist/js/bootstrap.js'}"></script>
 
 </head>
 <body>
 <header th:insert="layouts/common.html :: header"></header>
+
 <div class="dashboard-section">
     <div class="row">
         <div class="col-lg-9 col-md-9 recognise">
@@ -23,16 +26,19 @@
                 <div class="panel-body">
                     <div class="row">
 
-                        <form action="#" method="post">
+                        <form action="#" >
 
-                            <div class="col-lg-4 col-md-4">
+                            <div class="col-lg-4 col-md-4 ">
                                 <input type="text" class="select-newer"
                                        placeholder="Select a Newer"
-                                       required="required" id="newer" autocomplete="off">
+                                       required="required" id="newer" th:text="${param.firstName}">
 
                                 <span class="select-newer" autocomplete="off">
                                   <img th:src="@{'/images/newer.png'}" alt="">
                                 </span>
+
+
+                                <div id="searched-users" style="display:none"></div>
                             </div>
 
                             <div class="col-lg-3 col-md-3">
@@ -132,21 +138,25 @@
                         </div>
 
                         <div class="badge-content-right">
-                            <h4 id="mybadge"><a href="#" class="newer_board_user" data-renderedthrough="rightPanel">Manisha
-                                Goyal
-                            </a></h4>
+                            <table>
+                                <tr th:each="user, iterStat:${currentUser}" style="color: palevioletred;font-size: 25px">
+                                    <td th:text="${user.firstName}"></td>
+                                    <td th:text="${user.lastName}"></td>
+                                </tr>
+                            </table>
+
                             <span>
-                            <img th:src="@{'/images/goldstar.png'}" alt="">
-                            <i>0</i>
-                        </span>
+                                 <img th:src="@{'/images/goldstar.png'}" alt="">
+                                 <i>0</i>
+                                 </span>
                             <span>
-                            <img th:src="@{'/images/silverstar.png'}" alt="">
-                            <i>0</i>
-                         </span>
+                                <img th:src="@{'/images/silverstar.png'}" alt="">
+                                <i>0</i>
+                            </span>
                             <span>
-                            <img th:src="@{'/images/bronzestar.png'}" alt="">
-                            <i>0</i>
-                        </span>
+                                <img th:src="@{'/images/bronzestar.png'}" alt="">
+                                <i>0</i>
+                            </span>
                         </div>
                     </div>
                 </div>

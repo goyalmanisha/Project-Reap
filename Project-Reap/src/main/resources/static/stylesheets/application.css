@@ -135,3 +135,28 @@ footer {
     margin-top: 0%;
     margin-left: 37%;
 }
+
+/*Search section on user dashboard*/
+
+.user-search {
+    position: relative;
+}
+
+div#searched-users {
+    position: absolute;
+    top: 31px;
+    z-index: 1;
+    left: 30px;
+    width: 242px;
+    background: #fff;
+    border: 1px solid #999;
+}
+
+.search-user {
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.search-user:hover {
+    background: #f0f0f0;
+}
