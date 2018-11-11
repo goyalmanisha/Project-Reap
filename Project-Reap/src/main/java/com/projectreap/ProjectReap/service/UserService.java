@@ -1,15 +1,15 @@
 package com.projectreap.ProjectReap.service;
 
 import com.projectreap.ProjectReap.entity.User;
+import com.projectreap.ProjectReap.entity.UserBadge;
 import com.projectreap.ProjectReap.enums.Role;
 import com.projectreap.ProjectReap.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 @Service
 public class UserService {
@@ -22,10 +22,17 @@ public class UserService {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+
+
+
     public User update(User user) {
         Iterator<User> iterator = userRepository.findAll().iterator();
         if (iterator.hasNext()) {
             user.setRole(Role.USER.getValue());
+
+            UserBadge userBadge=new UserBadge(3,2,1);
+
+            user.setBadge(userBadge);
             userRepository.save(user);
         }
         else {
@@ -43,7 +50,7 @@ public class UserService {
     }
 
      public List<User> getAllUsers(){
-       return userRepository.getUsersByRole(Role.USER);
+       return userRepository.getUsersByRole(Role.USER.getValue());
     }
 
     @Transactional

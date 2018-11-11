@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Role {
-    ADMIN("admin"),
     USER("user"),
+    ADMIN("admin"),
     SUPERVISOR("supervisor"),
     PRACTICE_HEAD("Practice head");
 

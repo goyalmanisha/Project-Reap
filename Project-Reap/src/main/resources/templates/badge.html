@@ -31,18 +31,18 @@
                                 <td th:text="${user.lastName}"></td>
                             </tr>
                         </table>
-                        <span>
-                            <img th:src="@{'/images/goldstar.png'}" alt="">
-                            <i>0</i>
-                        </span>
-                        <span>
-                            <img th:src="@{'/images/silverstar.png'}" alt="">
-                            <i>0</i>
-                         </span>
-                        <span>
-                            <img th:src="@{'/images/bronzestar.png'}" alt="">
-                            <i>0</i>
-                        </span>
+                        <table>
+                            <tr>
+                                <th><img th:src="@{'/images/goldstar.png'}" alt=""></th>
+                                <th><img th:src="@{'/images/silverstar.png'}" alt=""></th>
+                                <th><img th:src="@{'/images/bronzestar.png'}" alt=""></th>
+                            </tr>
+                            <tr th:each="user,iterStat:${currentUser}">
+                                <td th:text="${user.badge.goldBadge}"></td>
+                                <td th:text="${user.badge.silverBadge}"></td>
+                                <td th:text="${user.badge.bronzeBadge}"></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

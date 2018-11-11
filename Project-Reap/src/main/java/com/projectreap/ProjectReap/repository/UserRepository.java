@@ -22,7 +22,7 @@ public interface UserRepository extends CrudRepository<User, Integer>, JpaSpecif
     /*
     * Fetching the list of users to be shown on admin page.
     * */
-    List<User> getUsersByRole(Role role);
+    List<User> getUsersByRole(String role);
 
     /*
     * Query to set the password manually at forget password functionality.

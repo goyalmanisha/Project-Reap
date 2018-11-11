@@ -26,9 +26,12 @@
                 <a th:href="@{/user/badge}" class="btn btn-info btn-light">
                     <span class="glyphicon glyphicon-star-empty"></span> Badges
                 </a>
-                <a th:href="@{/user/dashboard}" class="btn btn-info btn-light">
+
+                <a th:href="@{/admin/dashboard}"  class="btn btn-info btn-light">
                     <span class="glyphicon glyphicon-dashboard"></span> Dashboard
                 </a>
+
+
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="search">
                     <div class="input-group-btn">
@@ -40,19 +43,6 @@
 
                 <button id="logout-button" class="btn btn-primary" type="submit" onclick="logout()"><span class="glyphicon glyphicon-user"> Logout</span>
                 </button>
-
-                <!--<div class="dropdown">-->
-                    <!---->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li>-->
-                        <!--<form th:action="@{/logout}" method="post">-->
-                                <!--<input type="submit" value="Logout">-->
-                        <!--</form>-->
-                        <!--</li>-->
-                        <!--<li><a href="javascript:document.getElementById('logout').submit()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>-->
-
-                    <!--</ul>-->
-                <!--</div>-->
 
             </form>
 

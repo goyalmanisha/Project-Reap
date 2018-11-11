@@ -39,9 +39,11 @@ public class User {
     //@Enumerated(EnumType.STRING)
     private String  role;
 
-    @ElementCollection
-    List<Badge> badges=new ArrayList<>();
+//    @ElementCollection
+//    List<UserBadge> badges=new ArrayList<>();
 
+    @Embedded
+    UserBadge badge;
 
     public User() {
     }
@@ -110,12 +112,21 @@ public class User {
         this.role = role;
     }
 
-    public List<Badge> getBadges() {
-        return badges;
+//    public List<UserBadge> getBadges() {
+//        return badges;
+//    }
+//
+//    public void setBadges(List<UserBadge> badges) {
+//        this.badges = badges;
+//    }
+
+
+    public UserBadge getBadge() {
+        return badge;
     }
 
-    public void setBadges(List<Badge> badges) {
-        this.badges = badges;
+    public void setBadge(UserBadge badge) {
+        this.badge = badge;
     }
 
     @Override

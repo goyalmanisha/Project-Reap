@@ -131,9 +131,20 @@ footer {
 .badge-content-right{
     float:right;
 }
+.badge-content-right table{
+    width: 100%;
+}
+.badge-content-right table tr{
+    text-align: center;
+}
 .badge-content-right img{
     margin-top: 0%;
     margin-left: 37%;
+}
+
+.recognize-button{
+    background-color: white !important;
+    border-top: none !important;
 }
 
 /*Search section on user dashboard*/
@@ -159,4 +170,31 @@ div#searched-users {
 
 .search-user:hover {
     background: #f0f0f0;
+}
+
+/*Admin Section User List*/
+#users{
+    width: 100%;
+    margin: 0px;
+    padding: 19px;
+}
+
+#users table{
+    width: 100%;
+    /*border-collapse: unset !important;*/
+    /*border-spacing: unset !important;*/
+}
+#users table tr th{
+    font-size: initial;
+    font-style: italic;
+    text-align: left;
+    padding: 10px;
+}
+
+#users table tr th{
+      padding: 10px;
+}
+.userdata td{
+    padding: 10px;
+    font-size:initial;
 }

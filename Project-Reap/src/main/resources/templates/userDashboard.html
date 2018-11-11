@@ -26,7 +26,7 @@
                 <div class="panel-body">
                     <div class="row">
 
-                        <form action="#" >
+                        <form action="#" id="recognize-submit">
 
                             <div class="col-lg-4 col-md-4 ">
                                 <input type="text" class="select-newer"
@@ -42,38 +42,38 @@
                             </div>
 
                             <div class="col-lg-3 col-md-3">
-                                <div class="dropdown">
+                                <div class="dropdown" id="select-badge">
                                     <button class="btn btn-primary dropdown-toggle" type="button"
                                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
                                         Select a Badge
                                         <span class="caret"></span>
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" th:each="user,iterStat:${currentUser}">
                                         <li>
-                                            <a class="dropdown-item" th:href="@{'#'}">
+                                            <a class="dropdown-item" th:href="@{'#'}" title="Gold">
                                                 <img th:src="@{'/images/goldstar.png'}" alt="">
                                                 Gold
                                                 <span>
-                                            <i class="user-gold-badge">2</i>
+                                            (<i class="user-gold-badge" th:text="${user.badge.goldBadge}"></i>)
                                             </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" th:href="@{'#'}">
+                                            <a class="dropdown-item" th:href="@{'#'}" title="Silver">
                                                 <img th:src="@{'/images/silverstar.png'}" alt="">
                                                 Silver
                                                 <span>
-                                                <i class="user-gold-badge">4</i>
+                                                (<i class="user-silver-badge" th:text="${user.badge.silverBadge}"></i>)
                                             </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" th:href="@{'#'}">
+                                            <a class="dropdown-item" th:href="@{'#'}" title="Bronze">
                                                 <img th:src="@{'/images/bronzestar.png'}" alt="">
                                                 Bronze
                                                 <span>
-                                                <i class="user-gold-badge">6</i>
+                                                (<i class="user-bronze-badge" th:text="${user.badge.bronzeBadge}"></i>)
                                             </span>
                                             </a>
                                         </li>
@@ -108,19 +108,21 @@
                                 </textarea>
                             </div>
 
-                        </form>
 
 
-                    </div>
-                </div>
-
-                <div class="panel-footer">
+                <div class="panel-footer recognize-button ">
+                            <!--<div class="recognize-button">-->
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Recognize</button>
                     </div>
 
                     <!--<input class="btn btn-primary" type="submit" name="submit" value="Recognize" class="recognize" id="submit">-->
 
+                </div>
+                        </form>
+
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,25 +140,26 @@
                         </div>
 
                         <div class="badge-content-right">
-                            <table>
+                            <table cellspacing="20px" cellpadding="20px">
                                 <tr th:each="user, iterStat:${currentUser}" style="color: palevioletred;font-size: 25px">
                                     <td th:text="${user.firstName}"></td>
                                     <td th:text="${user.lastName}"></td>
                                 </tr>
                             </table>
 
-                            <span>
-                                 <img th:src="@{'/images/goldstar.png'}" alt="">
-                                 <i>0</i>
-                                 </span>
-                            <span>
-                                <img th:src="@{'/images/silverstar.png'}" alt="">
-                                <i>0</i>
-                            </span>
-                            <span>
-                                <img th:src="@{'/images/bronzestar.png'}" alt="">
-                                <i>0</i>
-                            </span>
+                            <table>
+                                <tr>
+                                    <th><img th:src="@{'/images/goldstar.png'}" alt=""></th>
+                                    <th><img th:src="@{'/images/silverstar.png'}" alt=""></th>
+                                    <th><img th:src="@{'/images/bronzestar.png'}" alt=""></th>
+                                </tr>
+                                <tr th:each="user,iterStat:${currentUser}">
+                                    <td th:text="${user.badge.goldBadge}"></td>
+                                    <td th:text="${user.badge.silverBadge}"></td>
+                                    <td th:text="${user.badge.bronzeBadge}"></td>
+                                </tr>
+                            </table>
+
                         </div>
                     </div>
                 </div>

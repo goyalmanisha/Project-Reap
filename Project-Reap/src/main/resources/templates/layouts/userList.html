@@ -14,8 +14,8 @@
 
 <div id="users">
 
-    <table th:cellpadding="20px" th:cellspacing="20px" th:border="solid">
-        <tr>
+    <table th:cellpadding="30px" th:cellspacing="30px">
+        <tr style="background-color: lightcyan">
             <th>User Id</th>
             <th>FirstName</th>
             <th>LastName</th>
@@ -23,23 +23,26 @@
             <th>Role</th>
             <th>Email</th>
         </tr>
-        <tr th:each="user, iterStat:${userList}"  th:style="${iterStat.odd}? 'background: #f0f0f2;' : 'background: #ffffff;'">
+        <tr class="userdata" th:each="user, iterStat:${userList}"  th:style="${iterStat.odd}? 'background: #f0f0f2;' : 'background: #ffffff;'">
             <td th:text="${user.id}"></td>
             <td th:text="${user.firstName}"></td>
             <td th:text="${user.lastName}"></td>
             <td th:text="${user.userName}"></td>
-            <td th:text="${user.role}"></td>
+            <!--<td th:text="${user.role}"></td>-->
+            <td>
+                <select>
+                    <option th:each="role: ${T(com.projectreap.ProjectReap.enums.Role).values()}"
+                            th:value="${role.getValue()}" th:text="${role.getValue()}">
+                    </option>
+                </select>
+            </td>
             <td th:text="${user.email}"></td>
         </tr>
 
         <!--TODO:
         Create an ENUM with values USER, ADMIN, SUPER_ADMIN and iterate it to show a custom message to users basis on the ENUM value
         -->
-        <!--<select>-->
-            <!--<option th:each="role: ${T(com.projectreap.ProjectReap.enums.Role).valueOf()}"-->
-                    <!--th:value="${role.getValue()}" th:text="${role.getValue()}">-->
-            <!--</option>-->
-        <!--</select>-->
+
     </table>
 
 
