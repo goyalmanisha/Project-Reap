@@ -2,6 +2,8 @@ package com.projectreap.ProjectReap.controller;
 
 import com.projectreap.ProjectReap.entity.User;
 import com.projectreap.ProjectReap.enums.Role;
+import com.projectreap.ProjectReap.pojo.AppreciatedData;
+import com.projectreap.ProjectReap.pojo.UserUpdatedData;
 import com.projectreap.ProjectReap.service.UserService;
 import com.projectreap.ProjectReap.util.EmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -29,7 +34,7 @@ public class UserController {
     /*
     Start Page for login and register
     * */
-    @GetMapping(value = {"/", "/index","/index/forgotPassword"})
+    @GetMapping(value = {"/", "/index", "/index/forgotPassword"})
     public String showHome(User user) {
         return "index";
     }
@@ -79,18 +84,26 @@ public class UserController {
             redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/";
         } else {
-            if (!loggedInUser.getPassword().isEmpty() && loggedInUser.getPassword().equals(user.getPassword())) {
-                if (loggedInUser.getRole().equals(Role.USER.getValue())) {
-                    //add user detail in session(assign session to logged in user)
-                    addUserInSession(loggedInUser, session);
-                    return "redirect:/user/dashboard";
+            if (loggedInUser.getStatus() == true) {
+                if (!loggedInUser.getPassword().isEmpty() && loggedInUser.getPassword().equals(user.getPassword())) {
+                    if (loggedInUser.getRole().equals(Role.ADMIN.getValue())) {
+                        //add user detail in session(assign session to logged in user)
+                        addUserInSession(loggedInUser, session);
+                        return "redirect:/admin/dashboard";
+                    } else {
+                        //add user detail in session(assign session to logged in user)
+
+                        addUserInSession(loggedInUser, session);
+//                        model.addAttribute("user",loggedInUser);
+                        return "redirect:/user/dashboard";
+                    }
                 } else {
-                    //add user detail in session(assign session to logged in user)
-                    addUserInSession(loggedInUser, session);
-                    return "redirect:/admin/dashboard";
+                    redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Enter Valid Credentials");
+                    redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+                    return "redirect:/index";
                 }
             } else {
-                redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Enter Valid Credentials");
+                redirectAttributes.addFlashAttribute("message", "Inactive user");
                 redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
                 return "redirect:/index";
             }
@@ -102,12 +115,17 @@ public class UserController {
     public String getUserDashboard(HttpServletRequest request, RedirectAttributes redirectAttributes, Model model) {
 
         User currentUser = (User) request.getSession().getAttribute("user");
-        if (currentUser.getRole().equals(Role.USER.getValue())) {
-            model.addAttribute("currentUser", currentUser);
-            return "userDashboard";
+        if (currentUser != null) {
+            if (!currentUser.getRole().equals(Role.ADMIN.getValue())) {
+                model.addAttribute("currentUser", currentUser);
+                model.addAttribute("appreciatedData", new AppreciatedData());
+                return "userDashboard";
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Not Authorised User");
+                redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+                return "redirect:/index";
+            }
         } else {
-            redirectAttributes.addFlashAttribute("message", "Error,Login Failed! User Not exists");
-            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/index";
         }
     }
@@ -115,13 +133,18 @@ public class UserController {
     @GetMapping("/admin/dashboard")
     public String getAdminDashboard(HttpServletRequest request, RedirectAttributes redirectAttributes) {
         User currentUser = (User) request.getSession().getAttribute("user");
-        if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
-            return "adminDashboard";
-        } else if (currentUser.getRole().equals(Role.USER.getValue())){
-            return "redirect:/user/dashboard";
+
+        if (currentUser != null) {
+            if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
+                return "adminDashboard";
+            } else if (currentUser.getRole().equals(Role.USER.getValue())) {
+                return "redirect:/user/dashboard";
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Not Authorised User");
+                redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+                return "redirect:/index";
+            }
         } else {
-            redirectAttributes.addFlashAttribute("message", "Error,Login Failed! User Not Exists");
-            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/index";
         }
     }
@@ -129,17 +152,22 @@ public class UserController {
     /*
     Fetch the users list on Admin page....
     */
-    @GetMapping("/admin/users")
+    @GetMapping(value = {"/admin/users", "/admin/updatedUser"})
     private String getUserList(HttpServletRequest request, RedirectAttributes redirectAttributes, Model model) {
         User currentUser = (User) request.getSession().getAttribute("user");
-        if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
-            model.addAttribute("userList", userService.getAllUsers());
-            return "layouts/userList";
+        if (currentUser != null) {
+            if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
+                model.addAttribute("userList", userService.getAllUsersList());
+                return "layouts/userList";
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Not Authorised to access the list");
+                redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+                return "redirect:/index";
+            }
         } else {
-            redirectAttributes.addFlashAttribute("message", "Not Authorised to access the list");
-            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/index";
         }
+
     }
 
     /*
@@ -148,17 +176,27 @@ public class UserController {
     @RequestMapping(value = "/user/badge")
     public String showbadge(HttpServletRequest request, RedirectAttributes redirectAttributes, Model model) {
         User currentUser = (User) request.getSession().getAttribute("user");
-        if (currentUser.getRole().equals(Role.USER.getValue()))
+        if (currentUser != null && currentUser.getRole().equals(Role.USER.getValue())) {
             model.addAttribute("currentUser", currentUser);
-        return "badge";
+            return "badge";
+        } else {
+            return "redirect:/index";
+        }
     }
 
-    /*JSON data....................*/
+    /*AutoComplete Search......*/
     @GetMapping(value = "/users")
     @ResponseBody
-    public List<User> getUsers(@RequestParam String firstName) {
-        System.out.println(searchResult(firstName));
-        return searchResult(firstName);
+    public List<Map> getUsers(@RequestParam String term) {
+        List<User> result = userService.getUsersFirstName(term);
+        return result.stream().map(user -> {
+            Map response = new HashMap();
+            response.put("label", user.getFirstName());
+            response.put("value", user.getFirstName() + " " + user.getLastName());
+            response.put("userId", user.getId());
+            // response.put("name", user.getFirstName());
+            return response;
+        }).collect(Collectors.toList());
     }
 
     private void addUserInSession(User u, HttpSession httpSession) {
@@ -167,14 +205,32 @@ public class UserController {
         httpSession.setAttribute("role", u.getRole());
     }
 
-    private List<User> searchResult(String firstname){
-        List<User> result=new ArrayList<>();
-       List<User> userList=userService.getAllUserList();
-       for(User user:userList){
-            if (user.getFirstName().contains(firstname)){
-                result.add(user);
-            }}
-            return result;
+//    @RequestMapping(value = "/userslist")
+//    @ResponseBody
+//    public List<User> searchResult() {
+//        return userService.getAllUsersList();
+//    }
+
+
+    /*
+     Update the user details by admin.
+     */
+    @RequestMapping(value = "/admin/update-user", method = RequestMethod.POST)
+    public String updateUserDetailsByAdmin(@ModelAttribute UserUpdatedData userUpdatedData) {
+        if (userUpdatedData.getUserStatus() == null) {
+            userUpdatedData.setUserStatus(false);
         }
+        userService.updateUserDetails(userUpdatedData.getUserRole(), userUpdatedData.getUserStatus(), userUpdatedData.getUserId());
+
+        return "redirect:/admin/updatedUser";
     }
 
+    /*
+    * Delete the particular row from user..
+    * */
+    @GetMapping("/admin/users/{id}/delete")
+    public ModelAndView deleteUser(@PathVariable Integer id) {
+        userService.deleteUserById(id);
+        return new ModelAndView("redirect:/admin/users");
+    }
+}

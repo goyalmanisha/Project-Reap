@@ -1,17 +1,17 @@
 package com.projectreap.ProjectReap.enums;
 
 public enum Badge {
-    Gold(30),
-    Silver(20),
-    Bronze(10);
+    gold(30),
+    silver(20),
+    bronze(10);
 
-    private final int value;
+    private int weight;
 
-    Badge(final int newValue) {
-        value = newValue;
+    Badge( int weight) {
+        this.weight = weight;
     }
 
-    public int getValue() {
-        return value;
+    public int getWeight() {
+        return weight;
     }
 }

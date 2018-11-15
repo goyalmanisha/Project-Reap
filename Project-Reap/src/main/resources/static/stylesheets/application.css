@@ -1,6 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
+    /*background-color: black !important;*/
 }
 
 /*Header Section */
@@ -84,7 +85,7 @@ footer {
 /*User dashboard*/
 
 .dashboard-section {
-    background-color: whitesmoke;
+    background-color: black;
 }
 .panel-heading{
     display: flex;
@@ -121,9 +122,9 @@ footer {
     height: 100%;
     max-width: 100px;
 }
-.mybadge .panel{
-    width:135%;
-}
+/*.mybadge .panel{*/
+    /*width: 100%;*/
+/*}*/
 .badge-content{
     display: flex;
     margin: 0px;
@@ -145,6 +146,10 @@ footer {
 .recognize-button{
     background-color: white !important;
     border-top: none !important;
+}
+
+#dateRange{
+    font-size: 34px;
 }
 
 /*Search section on user dashboard*/

@@ -4,48 +4,81 @@
     <meta charset="UTF-8">
     <title>UserList</title>
     <link th:href="@{'/stylesheets/application.css'}" rel="stylesheet"/>
-    <link th:href="@{'/bootstrap-3.3.7-dist/css/bootstrap.css'}" rel="stylesheet"/>
     <script th:src="@{'/javascript/jquery-3.3.1.min.js'}"></script>
+    <script th:src="@{'/javascript/application.js'}"></script>
+    <link th:href="@{'/bootstrap-3.3.7-dist/css/bootstrap.css'}" rel="stylesheet"/>
     <script th:src="@{'/bootstrap-3.3.7-dist/js/bootstrap.js'}"></script>
 
 </head>
 <body>
 <header th:insert="layouts/common.html :: header"></header>
-
 <div id="users">
 
     <table th:cellpadding="30px" th:cellspacing="30px">
+
         <tr style="background-color: lightcyan">
             <th>User Id</th>
             <th>FirstName</th>
-            <th>LastName</th>
             <th>UserName</th>
+            <th>Gold Badge</th>
+            <th>Silver Badge</th>
+            <th>Bronze Badge</th>
             <th>Role</th>
             <th>Email</th>
+            <th>IsActive</th>
+            <th></th>
+            <th></th>
+            <th></th>
+
         </tr>
         <tr class="userdata" th:each="user, iterStat:${userList}"  th:style="${iterStat.odd}? 'background: #f0f0f2;' : 'background: #ffffff;'">
             <td th:text="${user.id}"></td>
             <td th:text="${user.firstName}"></td>
-            <td th:text="${user.lastName}"></td>
+
             <td th:text="${user.userName}"></td>
+            <td th:text="${user.badge.goldBadge}"></td>
+            <td th:text="${user.badge.silverBadge}"></td>
+            <td th:text="${user.badge.bronzeBadge}"></td>
             <!--<td th:text="${user.role}"></td>-->
-            <td>
+
+            <td >
+                <p th:text="${user.role}"></p>
                 <select>
                     <option th:each="role: ${T(com.projectreap.ProjectReap.enums.Role).values()}"
-                            th:value="${role.getValue()}" th:text="${role.getValue()}">
+                            th:value="${role.getValue()}" th:text="${role.getValue()}"  >
                     </option>
                 </select>
             </td>
             <td th:text="${user.email}"></td>
+            <td>
+                <input type="checkbox" name="status" th:checked="${user.status}" />
+                <!--<input type="radio" name="status"  value="true">Active<br>-->
+                <!--<input type="radio" name="status"  value="false">Inactive<br>-->
+                <!--<span th:if="${user.status}">isActive</span>-->
+                <!--<span th:unless="${user.status}">NotActive</span>-->
+            </td>
+            <td>
+                <a th:attr="data-id=${user.id}" href="#" class="update-user btn btn-info btn-lg" >
+                    <span class="glyphicon glyphicon-edit"></span> Update
+                </a>
+            </td>
+            <td>
+                <a th:href="@{'/admin/users/{id}/delete'(id=${user.id})}" class="delete"
+                   th:attr="name=${user.firstName}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+            <td>
+                <button id="refresh" class="btn btn-info btn-lg" onClick="window.location.reload()">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+            </td>
+
         </tr>
 
-        <!--TODO:
-        Create an ENUM with values USER, ADMIN, SUPER_ADMIN and iterate it to show a custom message to users basis on the ENUM value
-        -->
-
     </table>
-
-
 </div>
 <footer th:insert="layouts/common.html :: footer"></footer>
 </body>

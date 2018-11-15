@@ -42,7 +42,8 @@ public class PasswordController {
 
             User resetUser = optional.get();
 //          Setting the password manually in the database.
-            userService.getPasswordById(resetUser.getId());
+           // userService.getPasswordById(resetUser.getId());
+            resetUser.setPassword("abcd");
             userService.update(resetUser);
 
             // Add success message to view

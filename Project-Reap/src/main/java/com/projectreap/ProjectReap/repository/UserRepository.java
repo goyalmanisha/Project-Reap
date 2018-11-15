@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends CrudRepository<User, Integer>, JpaSpecificationExecutor<User> {
+public interface UserRepository extends CrudRepository<User, Integer>{
 
     @Query("SELECT u FROM User u WHERE userName=:userName")
     User getUsername(@Param("userName") String userName);
@@ -24,15 +25,15 @@ public interface UserRepository extends CrudRepository<User, Integer>, JpaSpecif
     * */
     List<User> getUsersByRole(String role);
 
-    /*
-    * Query to set the password manually at forget password functionality.
-    * */
-    @Modifying
-    @Query("UPDATE User u SET u.password='abcd' where u.id=:id")
-    Integer getById(@Param("id") int id);
+    List<User> findByFirstNameLike(String firstname);
 
-    List<User> findByFirstName(String firstname);
+    List<User> findAll();
 
-    @Query("Select u from User u")
-    List<User> getUsers();
+    User getUserById(Integer id);
+
+
+
+//    @Query("SELECT u.badge from User u where ")
+//    User getGoldBadge();
+
 }

@@ -1,5 +1,7 @@
 package com.projectreap.ProjectReap.entity;
 
+import com.projectreap.ProjectReap.enums.Role;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
@@ -54,6 +56,9 @@ public class UserBadge {
     public void setBronzeBadge(Integer bronzeBadge) {
         this.bronzeBadge = bronzeBadge;
     }
+
+
+
 
     @Override
     public String toString() {
