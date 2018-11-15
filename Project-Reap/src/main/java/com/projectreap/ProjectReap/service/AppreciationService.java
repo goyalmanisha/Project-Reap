@@ -7,6 +7,7 @@ import com.projectreap.ProjectReap.pojo.AppreciatedData;
 import com.projectreap.ProjectReap.repository.AppreciationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,21 +20,18 @@ public class AppreciationService {
     @Autowired
     UserService userService;
 
-
-
-
     public Appreciation save(AppreciatedData appreciatedData,HttpServletRequest request) {
         Appreciation appreciation=appreciatedDataToDomain(appreciatedData,request);
         // handlingBadge();
         return appreciationRepository.save(appreciation);
     }
 
-//    @Transactional
-//    public String handlingBadge(AppreciatedData appreciatedData, User user){
-//        if(appreciatedData.getBadge().equals(user.getBadge().getGoldBadge())){
-//            //Integer gol
-//        }
-//    }
+    @Transactional
+    public void handlingBadge(AppreciatedData appreciatedData, User user){
+        if(appreciatedData.getBadge().equals(user.getBadge().getGoldBadge())){
+            //Integer gol
+        }
+    }
 
     public Appreciation appreciatedDataToDomain(AppreciatedData appreciatedData,HttpServletRequest request) {
         Appreciation appreciation = new Appreciation();
@@ -56,6 +54,7 @@ public class AppreciationService {
 
         appreciation.setKarma(appreciatedData.getKarma());
         appreciation.setKarmaReason(appreciatedData.getKarmaReason());
+        System.out.println(appreciation);
         return appreciation;
     }
 

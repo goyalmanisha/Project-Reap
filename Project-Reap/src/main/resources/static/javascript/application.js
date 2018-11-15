@@ -79,18 +79,12 @@ $(document).ready(function () {
             //     }
             // );
 
-
-
-
-
-
     $('#karma').on('change', function () {
         if (this.value === 'Extra Miler') {
             $("#karma1").show();
             $("#selectKarma").hide();
         }
-
-else if (this.value === 'Knowledge Sharing2') {
+        else if (this.value === 'Knowledge Sharing') {
         $("#karma2").show();
         $("#karma1").hide();
         $("#selectKarma").hide();
@@ -116,7 +110,7 @@ else if (this.value === 'Knowledge Sharing2') {
         $("#karma1").hide();
         $("#selectKarma").hide();
     }
-    else if (this.value === 'Continuous Learning and Improvemen') {
+    else if (this.value === 'Continuous Learning and Improvement') {
         $("#core1").show();
         $("#karma5").hide();
         $("#karma4").hide();
