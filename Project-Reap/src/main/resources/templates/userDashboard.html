@@ -103,9 +103,9 @@
                             </div>
 
 
-                            <div id="karmaReason" class="col-lg-12 col-md-12 karma-description" th:field="*{karmaReason}">
+                            <div id="karmaReason" class="col-lg-12 col-md-12 karma-description" th:field="*{karmaReason}" >
                                 <label >Reason</label>:
-                                <div class="displayStyle display">
+                                <div class="displayStyle display" th:value="*{karmaReason}">
                                     <h5 id="selectKarma" style="border: 1px solid black;padding: 1%;" >Please select a karma/core value first.....</h5>
 
                                     <div id="karma1" style="display: none">

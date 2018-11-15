@@ -52,10 +52,7 @@
             <td th:text="${user.email}"></td>
             <td>
                 <input type="checkbox" name="status" th:checked="${user.status}" />
-                <!--<input type="radio" name="status"  value="true">Active<br>-->
-                <!--<input type="radio" name="status"  value="false">Inactive<br>-->
-                <!--<span th:if="${user.status}">isActive</span>-->
-                <!--<span th:unless="${user.status}">NotActive</span>-->
+
             </td>
             <td>
                 <a th:attr="data-id=${user.id}" href="#" class="update-user btn btn-info btn-lg" >

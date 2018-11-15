@@ -16,7 +16,7 @@ public class Appreciation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @CreatedDate
+    @Temporal(TemporalType.DATE)
     private Date creationDate;
 
     @ManyToOne

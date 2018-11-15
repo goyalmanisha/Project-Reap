@@ -76,7 +76,7 @@ public class UserController {
      * */
     @PostMapping("/login")
     public String handleLogin(
-            @ModelAttribute User user, HttpSession session, RedirectAttributes redirectAttributes, Model model) {
+            @ModelAttribute User user, HttpSession session, RedirectAttributes redirectAttributes) {
 
         User loggedInUser = userService.findByUsername(user.getUserName());
         if (loggedInUser == null) {

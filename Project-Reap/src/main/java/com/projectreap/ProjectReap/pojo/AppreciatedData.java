@@ -70,4 +70,5 @@ public class AppreciatedData {
                 ", karmaReason='" + karmaReason + '\'' +
                 '}';
     }
+
 }

@@ -51,7 +51,7 @@ public class User {
     @Column(name = "IsActive", columnDefinition = "boolean default true")
     Boolean status=true;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(joinColumns = @JoinColumn(name="USER_ID")
             ,inverseJoinColumns = @JoinColumn(name = "APPRECIATION_ID"))
     List<Appreciation> appreciationList=new ArrayList<>();

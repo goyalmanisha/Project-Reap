@@ -15,13 +15,17 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    public static final String[] ROLE_USER = new String[]{"USER", "user"};
+    //public static final String[] ROLE_USER = new String[]{"USER", "user"};
 
     @Autowired
     UserRepository userRepository;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    public User save(User user){
+        return userRepository.save(user);
+    }
 
     public User update(User user) {
         Iterator<User> iterator = userRepository.findAll().iterator();
@@ -36,11 +40,11 @@ public class UserService {
 
 
     public User findByUsername(String username) {
-        return userRepository.getUsername(username);
+        return userRepository.findByUserName(username);
     }
 
     public Optional<User> findByEmail(String email) {
-        return userRepository.getEmail(email);
+        return userRepository.findByEmail(email);
     }
 
     public List<User> getAllUsersByRole(String role) {
