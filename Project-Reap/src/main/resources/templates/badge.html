@@ -37,10 +37,13 @@
                                 <th><img th:src="@{'/images/silverstar.png'}" alt=""></th>
                                 <th><img th:src="@{'/images/bronzestar.png'}" alt=""></th>
                             </tr>
-                            <tr th:each="user,iterStat:${currentUser}">
-                                <td th:text="${user.badge.goldBadge}"></td>
-                                <td th:text="${user.badge.silverBadge}"></td>
-                                <td th:text="${user.badge.bronzeBadge}"></td>
+                            <tr th:each="mapEntry : ${badgeCount}">
+                                <td th:text="${mapEntry.key}">hey</td>
+                                <td th:text="${mapEntry.value}"></td>
+
+                                <!--<td th:text="${user.badge.goldBadge}"></td>-->
+                                <!--<td th:text="${user.badge.silverBadge}"></td>-->
+                                <!--<td th:text="${user.badge.bronzeBadge}"></td>-->
                             </tr>
                         </table>
                     </div>

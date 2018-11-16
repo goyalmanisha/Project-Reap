@@ -4,6 +4,7 @@ import com.projectreap.ProjectReap.entity.User;
 import com.projectreap.ProjectReap.enums.Role;
 import com.projectreap.ProjectReap.pojo.AppreciatedData;
 import com.projectreap.ProjectReap.pojo.UserUpdatedData;
+import com.projectreap.ProjectReap.service.AppreciationService;
 import com.projectreap.ProjectReap.service.UserService;
 import com.projectreap.ProjectReap.util.EmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ public class UserController implements ErrorController {
     @Autowired
     EmailUtil emailUtil;
 
-
+    @Autowired
+    private AppreciationService appreciationService;
     private static final String path = "/error";
 
 
@@ -125,6 +127,7 @@ public class UserController implements ErrorController {
             if (!currentUser.getRole().equals(Role.ADMIN.getValue())) {
                 model.addAttribute("currentUser", currentUser);
                 model.addAttribute("appreciatedData", new AppreciatedData());
+                model.addAttribute("badgeCount", appreciationService.handlingBadge(currentUser));
                 return "userDashboard";
             } else {
                 redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Not Authorised User");
@@ -191,6 +194,8 @@ public class UserController implements ErrorController {
             } else {
                 System.out.println("Total points on badge page" +currentUser.getTotalPoints());
                 model.addAttribute("currentUser", currentUser);
+                model.addAttribute("badgeCount", appreciationService.handlingBadge(currentUser));
+                model.addAttribute("WallofFameList",appreciationService.findAllAppreciatedUser(currentUser));
                 return "badge";
             }
         } else {

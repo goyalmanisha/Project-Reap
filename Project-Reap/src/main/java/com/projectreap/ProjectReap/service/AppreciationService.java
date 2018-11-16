@@ -8,6 +8,7 @@ import com.projectreap.ProjectReap.repository.AppreciationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
@@ -28,11 +29,16 @@ public class AppreciationService {
         return appreciationRepository.save(appreciation);
     }
 
+    public List<Appreciation> findAllAppreciatedUser(User user){
+        return appreciationRepository.findAllByAppreciatedUser(user);
+    }
 
     public Map<String, Integer> handlingBadge(User user) {
         List<Appreciation> appreciations = appreciationRepository.findAllByAppreciatedUser(user);
-        System.out.println(appreciations);
         Map<String, Integer> badgeCount = new HashMap();
+        for (Badge badge: Badge.values()) {
+            badgeCount.put(badge.name(), 0);
+        }
         appreciations.forEach(appreciation -> {
             if (badgeCount.get(appreciation.getBadge().name()) == null) {
                 badgeCount.put(appreciation.getBadge().name(), 1);
@@ -43,8 +49,18 @@ public class AppreciationService {
         return badgeCount;
     }
 
+//    public Integer BadgesReceived(User user){
+//        // using lambda expression
+//        handlingBadge(user).keySet()
+//	        .iterator()
+//	                .forEachRemaining(key -> System.out.println(key + "=" + handlingBadge(user).get(key)));
+//    }
+
+
+
     public Integer getTotalPoints(User user) {
         Map<String, Integer> badgePoints = handlingBadge(user);
+
         Integer totalpoints = ((badgePoints.get("gold") * Badge.gold.getWeight()) + (badgePoints.get("silver") * Badge.silver.getWeight()) + (badgePoints.get("bronze") * Badge.silver.getWeight()));
         return totalpoints;
     }

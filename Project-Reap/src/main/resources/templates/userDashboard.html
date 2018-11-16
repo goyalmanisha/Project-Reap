@@ -897,7 +897,7 @@
                                     <th><img th:src="@{'/images/silverstar.png'}" alt=""></th>
                                     <th><img th:src="@{'/images/bronzestar.png'}" alt=""></th>
                                 </tr>
-                                <tr th:each="mapEntry : ${appreciatedBadge}">
+                                <tr th:each="mapEntry : ${badgeCount}">
                                     <td th:text="${mapEntry.key}">hey</td>
                                     <td th:text="${mapEntry.value}"></td>
 
@@ -999,10 +999,10 @@
 
 
                         </form>
-                    <div class="col-lg-9 col-sm-12" style="padding-top: 10px">
-                        <p th:text="${currentUser.firstName}"></p>
+                    <div class="col-lg-9 col-sm-12" style="padding-top: 10px" th:each="user,iterStat:${WallofFameList}">
+                        <!--<p th:text="${currentUser.firstName}"></p>-->
 
-
+                        <p th:text="${user.appreciatedUser.firstName}"></p>
                         <p>has received</p>
                         <!--has to be dynamic image-->
                         <img th:src="@{'/images/goldstar.png'}" alt="">

@@ -5,7 +5,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 public class AppreciatedData {
 
     private Integer userId;
-    private Integer appreciatedUser;
+private Integer appreciatedUser;
     private Integer appreciatedBy;
     private String badge;
     private String karma;
