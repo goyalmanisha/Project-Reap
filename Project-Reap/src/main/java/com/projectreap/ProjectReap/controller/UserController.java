@@ -128,6 +128,7 @@ public class UserController implements ErrorController {
                 model.addAttribute("currentUser", currentUser);
                 model.addAttribute("appreciatedData", new AppreciatedData());
                 model.addAttribute("badgeCount", appreciationService.handlingBadge(currentUser));
+                model.addAttribute("WallofFameList",appreciationService.findAll());
                 return "userDashboard";
             } else {
                 redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Not Authorised User");
@@ -195,7 +196,7 @@ public class UserController implements ErrorController {
                 System.out.println("Total points on badge page" +currentUser.getTotalPoints());
                 model.addAttribute("currentUser", currentUser);
                 model.addAttribute("badgeCount", appreciationService.handlingBadge(currentUser));
-                model.addAttribute("WallofFameList",appreciationService.findAllAppreciatedUser(currentUser));
+
                 return "badge";
             }
         } else {

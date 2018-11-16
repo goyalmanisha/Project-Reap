@@ -29,8 +29,8 @@ public class AppreciationService {
         return appreciationRepository.save(appreciation);
     }
 
-    public List<Appreciation> findAllAppreciatedUser(User user){
-        return appreciationRepository.findAllByAppreciatedUser(user);
+    public List<Appreciation> findAll(){
+        return appreciationRepository.findAll();
     }
 
     public Map<String, Integer> handlingBadge(User user) {

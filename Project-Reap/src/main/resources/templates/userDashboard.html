@@ -1001,14 +1001,13 @@
                         </form>
                     <div class="col-lg-9 col-sm-12" style="padding-top: 10px" th:each="user,iterStat:${WallofFameList}">
                         <!--<p th:text="${currentUser.firstName}"></p>-->
+                        <div style="display: inline-block;border: 1px solid black;">
+                            <p th:text="${user.appreciatedUser.firstName}"></p> has received <p th:text="${user.badge}"></p> From <p th:text="${user.appreciatedBy.firstName}"></p>
+                            <p th:text="${user.karma}"></p>
+                            <p th:text="${user.reason}"></p>
+                        </div>
 
-                        <p th:text="${user.appreciatedUser.firstName}"></p>
-                        <p>has received</p>
-                        <!--has to be dynamic image-->
-                        <img th:src="@{'/images/goldstar.png'}" alt="">
-                        <p>from</p>
-                        <p th:text="${currentUser.firstName}"></p>
-                        <!--<p th:text="${appreciation.karma}"></p>-->
+
                     </div>
 
                     </div>
