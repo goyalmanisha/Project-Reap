@@ -56,6 +56,9 @@ public class User {
             ,inverseJoinColumns = @JoinColumn(name = "APPRECIATION_ID"))
     List<Appreciation> appreciationList=new ArrayList<>();
 
+    @NotNull
+    private Integer totalPoints=0;
+
     public User() {
     }
 
@@ -141,6 +144,22 @@ public class User {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public List<Appreciation> getAppreciationList() {
+        return appreciationList;
+    }
+
+    public void setAppreciationList(List<Appreciation> appreciationList) {
+        this.appreciationList = appreciationList;
+    }
+
+    public Integer getTotalPoints() {
+        return totalPoints;
+    }
+
+    public void setTotalPoints(Integer totalPoints) {
+        this.totalPoints = totalPoints;
     }
 
     @Override

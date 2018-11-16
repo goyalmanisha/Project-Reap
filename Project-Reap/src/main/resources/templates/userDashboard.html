@@ -7,9 +7,7 @@
     <link th:href="@{'/bootstrap-3.3.7-dist/css/bootstrap.css'}" rel="stylesheet"/>
     <link th:href="@{'/stylesheets/jquery-ui.css'}" rel="stylesheet"/>
     <script th:src="@{'/javascript/jquery-3.3.1.min.js'}"></script>
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
     <script th:src="@{'/javascript/application.js'}"></script>
     <script th:src="@{'/bootstrap-3.3.7-dist/js/bootstrap.js'}"></script>
 
@@ -23,9 +21,9 @@
 
     <div class="row">
         <div class="col-lg-9 col-md-9 recognise">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <img th:src="@{'/images/star.png'}" alt="">
+                  <img th:src="@{'/images/star.png'}" alt="">
                     <h3>Recognize Newer</h3>
                 </div>
 
@@ -103,9 +101,9 @@
                             </div>
 
 
-                            <div id="karmaReason" class="col-lg-12 col-md-12 karma-description" th:field="*{karmaReason}" >
+                            <div id="karmaReason" class="col-lg-12 col-md-12 karma-description" th:field="*{reason}" >
                                 <label >Reason</label>:
-                                <div class="displayStyle display" th:value="*{karmaReason}">
+                                <div class="displayStyle display" th:value="*{reason}">
                                     <h5 id="selectKarma" style="border: 1px solid black;padding: 1%;" >Please select a karma/core value first.....</h5>
 
                                     <div id="karma1" style="display: none">
@@ -873,7 +871,7 @@
         </div>
 
         <div class="col-lg-3 col-md-3 mybadge" style="float: right;margin-top: -15%;">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <img th:src="@{'/images/star.png'}" alt="">
                     <h3>My Badges</h3>
@@ -899,10 +897,13 @@
                                     <th><img th:src="@{'/images/silverstar.png'}" alt=""></th>
                                     <th><img th:src="@{'/images/bronzestar.png'}" alt=""></th>
                                 </tr>
-                                <tr th:each="user,iterStat:${currentUser}">
-                                    <td th:text="${user.badge.goldBadge}"></td>
-                                    <td th:text="${user.badge.silverBadge}"></td>
-                                    <td th:text="${user.badge.bronzeBadge}"></td>
+                                <tr th:each="mapEntry : ${appreciatedBadge}">
+                                    <td th:text="${mapEntry.key}">hey</td>
+                                    <td th:text="${mapEntry.value}"></td>
+
+                                    <!--<td th:text="${user.badge.goldBadge}"></td>-->
+                                    <!--<td th:text="${user.badge.silverBadge}"></td>-->
+                                    <!--<td th:text="${user.badge.bronzeBadge}"></td>-->
                                 </tr>
                             </table>
 
@@ -917,7 +918,7 @@
     <div class="row">
 
         <div class="col-lg-9 col-md-9 recognise">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading" style="padding: 2%;">
                     <form style="display: flex; width: 100%;">
                         <div class="col-lg-4">
@@ -999,16 +1000,14 @@
 
                         </form>
                     <div class="col-lg-9 col-sm-12" style="padding-top: 10px">
-                    <a href="#">
-                        <strong></strong>
-                    </a>
+                        <p th:text="${currentUser.firstName}"></p>
+
+
                         <p>has received</p>
                         <!--has to be dynamic image-->
                         <img th:src="@{'/images/goldstar.png'}" alt="">
                         <p>from</p>
-                        <a href="#">
-                        <strong></strong>
-                        </a>
+                        <p th:text="${currentUser.firstName}"></p>
                         <!--<p th:text="${appreciation.karma}"></p>-->
                     </div>
 

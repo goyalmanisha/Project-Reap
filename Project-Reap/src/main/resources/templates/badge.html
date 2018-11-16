@@ -50,7 +50,7 @@
                         <!--<img th:src="@{'/images/points.png'}" alt="">-->
 
                         <div class="h1point availablePoints">
-                            <h1>0
+                            <h1 th:text="${currentUser.totalPoints}">
                                 <small>pts</small>
                             </h1>
                         </div>
@@ -73,11 +73,7 @@
                         <div class="col-lg-12 col-md-12">
                             <!-- Nav tabs -->
                             <div class="nav-outer">
-                                <!--<span class="custom-value-text">-->
 
-                                            <!--All (0)-->
-
-                                    <!--</span>-->
                                 <ul class="nav nav-tabs trending" role="tablist">
                                     <li role="presentation" class="active">
                                         <a href="/badge/index" role="tab">
@@ -133,28 +129,6 @@
 
 
                             </div>
-                            <!--<script>-->
-                                <!--updateMomentDates();-->
-                                <!--$(document).ready(function () {-->
-                                    <!--$('#loader').hide();-->
-                                <!--});-->
-                                <!--$("#badgeHistorySearchForm").submit(function () {-->
-                                    <!--filterBadgeHistory();-->
-                                    <!--return false-->
-                                <!--});-->
-                                <!--function filterBadgeHistory() {-->
-                                    <!--$('#loader').show();-->
-                                    <!--var $form = $("#badgeHistorySearchForm");-->
-                                    <!--$.get($form.attr("action") + "?" + $form.serialize(), function (response) {-->
-                                        <!--$('#badgeHistory').html(response);-->
-                                        <!--$('#loader').hide();-->
-                                    <!--});-->
-                                <!--}-->
-                                <!--newer_count();-->
-                                <!--$(document).on('change', "#badgeHistorySearchForm select", function () {-->
-                                    <!--filterBadgeHistory();-->
-                                <!--});-->
-                            <!--</script>-->
 
                         </div>
 

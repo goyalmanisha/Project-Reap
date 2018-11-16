@@ -44,7 +44,7 @@ public class PasswordController {
 //          Setting the password manually in the database.
            // userService.getPasswordById(resetUser.getId());
             resetUser.setPassword("abcd");
-            userService.update(resetUser);
+            userService.save(resetUser);
 
             // Add success message to view
             redirectAttributes.addFlashAttribute("message","A password reset link has been sent to " + user.getEmail());

@@ -9,7 +9,7 @@ public class AppreciatedData {
     private Integer appreciatedBy;
     private String badge;
     private String karma;
-    private String karmaReason;
+    private String reason;
 
     public Integer getUserId() {
         return userId;
@@ -51,12 +51,12 @@ public class AppreciatedData {
         this.karma = karma;
     }
 
-    public String getKarmaReason() {
-        return karmaReason;
+    public String getReason() {
+        return reason;
     }
 
-    public void setKarmaReason(String karmaReason) {
-        this.karmaReason = karmaReason;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class AppreciatedData {
                 ", appreciatedBy='" + appreciatedBy + '\'' +
                 ", badge='" + badge + '\'' +
                 ", karma='" + karma + '\'' +
-                ", karmaReason='" + karmaReason + '\'' +
+                ", reason='" + reason + '\'' +
                 '}';
     }
 

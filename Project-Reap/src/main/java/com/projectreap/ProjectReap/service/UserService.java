@@ -29,10 +29,11 @@ public class UserService {
 
     public User update(User user) {
         Iterator<User> iterator = userRepository.findAll().iterator();
-        if (iterator.hasNext()) {
+        if (!iterator.hasNext()) {
             provideDefaultBadgeByRole(user);
             userRepository.save(user);
         } else {
+            provideDefaultBadgeByRole(user);
             userRepository.save(user);
         }
         return user;

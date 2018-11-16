@@ -7,6 +7,7 @@ import com.projectreap.ProjectReap.pojo.UserUpdatedData;
 import com.projectreap.ProjectReap.service.UserService;
 import com.projectreap.ProjectReap.util.EmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,13 +24,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-public class UserController {
+public class UserController implements ErrorController {
 
     @Autowired
     UserService userService;
 
     @Autowired
     EmailUtil emailUtil;
+
+
+    private static final String path = "/error";
+
+
 
     /*
     Start Page for login and register
@@ -137,17 +143,16 @@ public class UserController {
         if (currentUser != null) {
             if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
                 return "adminDashboard";
-            } else if (currentUser.getRole().equals(Role.USER.getValue())) {
-                return "redirect:/user/dashboard";
             } else {
-                redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Not Authorised User");
-                redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
-                return "redirect:/index";
+                return "redirect:/user/dashboard";
             }
         } else {
+            redirectAttributes.addFlashAttribute("message", "Error,Login Failed! Not Authorised User");
+            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/index";
         }
     }
+
 
     /*
     Fetch the users list on Admin page....
@@ -157,6 +162,7 @@ public class UserController {
         User currentUser = (User) request.getSession().getAttribute("user");
         if (currentUser != null) {
             if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
+                System.out.println("userlist"+userService.getAllUsersList());
                 model.addAttribute("userList", userService.getAllUsersList());
                 return "layouts/userList";
             } else {
@@ -176,9 +182,17 @@ public class UserController {
     @RequestMapping(value = "/user/badge")
     public String showbadge(HttpServletRequest request, RedirectAttributes redirectAttributes, Model model) {
         User currentUser = (User) request.getSession().getAttribute("user");
-        if (currentUser != null && currentUser.getRole().equals(Role.USER.getValue())) {
-            model.addAttribute("currentUser", currentUser);
-            return "badge";
+        if (currentUser != null) {
+            if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
+                redirectAttributes.addFlashAttribute("message", "You don't have any badges.");
+                redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+                return "redirect:/index";
+
+            } else {
+                System.out.println("Total points on badge page" +currentUser.getTotalPoints());
+                model.addAttribute("currentUser", currentUser);
+                return "badge";
+            }
         } else {
             return "redirect:/index";
         }
@@ -194,7 +208,6 @@ public class UserController {
             response.put("label", user.getFirstName());
             response.put("value", user.getFirstName() + " " + user.getLastName());
             response.put("userId", user.getId());
-            // response.put("name", user.getFirstName());
             return response;
         }).collect(Collectors.toList());
     }
@@ -204,13 +217,6 @@ public class UserController {
         httpSession.setAttribute("id", u.getId());
         httpSession.setAttribute("role", u.getRole());
     }
-
-//    @RequestMapping(value = "/userslist")
-//    @ResponseBody
-//    public List<User> searchResult() {
-//        return userService.getAllUsersList();
-//    }
-
 
     /*
      Update the user details by admin.
@@ -226,11 +232,22 @@ public class UserController {
     }
 
     /*
-    * Delete the particular row from user..
-    * */
+     * Delete the particular row from user..
+     * */
     @GetMapping("/admin/users/{id}/delete")
     public ModelAndView deleteUser(@PathVariable Integer id) {
         userService.deleteUserById(id);
         return new ModelAndView("redirect:/admin/users");
+    }
+
+    @GetMapping(value = path)
+    @ResponseBody
+    public String errorMessage(){
+        return "This Page is not accessible.Please Check your URL!!!!!!!";
+    }
+
+    @Override
+    public String getErrorPath() {
+        return path;
     }
 }

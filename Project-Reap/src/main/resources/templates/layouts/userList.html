@@ -23,6 +23,7 @@
             <th>Gold Badge</th>
             <th>Silver Badge</th>
             <th>Bronze Badge</th>
+            <th>Available Points</th>
             <th>Role</th>
             <th>Email</th>
             <th>IsActive</th>
@@ -39,6 +40,8 @@
             <td th:text="${user.badge.goldBadge}"></td>
             <td th:text="${user.badge.silverBadge}"></td>
             <td th:text="${user.badge.bronzeBadge}"></td>
+            <td th:text="${user.totalPoints}"></td>
+
             <!--<td th:text="${user.role}"></td>-->
 
             <td >

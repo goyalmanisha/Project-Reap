@@ -30,7 +30,7 @@ public class Appreciation {
 
     private String karma;
 
-    private String karmaReason;
+    private String reason;
 
 
     public Integer getId() {
@@ -81,13 +81,24 @@ public class Appreciation {
         this.karma = karma;
     }
 
-    public String getKarmaReason() {
-        return karmaReason;
+    public String getReason() {
+        return reason;
     }
 
-    public void setKarmaReason(String karmaReason) {
-        this.karmaReason = karmaReason;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
-
+    @Override
+    public String toString() {
+        return "Appreciation{" +
+                "id=" + id +
+                ", creationDate=" + creationDate +
+                ", appreciatedUser=" + appreciatedUser +
+                ", appreciatedBy=" + appreciatedBy +
+                ", badge=" + badge +
+                ", karma='" + karma + '\'' +
+                ", reason='" + reason + '\'' +
+                '}';
+    }
 }

@@ -7,8 +7,6 @@ import com.projectreap.ProjectReap.pojo.AppreciatedData;
 import com.projectreap.ProjectReap.repository.AppreciationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -25,27 +23,30 @@ public class AppreciationService {
     @Autowired
     UserService userService;
 
-    public Appreciation save(AppreciatedData appreciatedData,HttpServletRequest request) {
-        Appreciation appreciation=appreciatedDataToDomainAndUpdatingBadge(appreciatedData,request);
-        // handlingBadge();
+    public Appreciation save(AppreciatedData appreciatedData, HttpServletRequest request) {
+        Appreciation appreciation = appreciatedDataToDomainAndUpdatingBadge(appreciatedData, request);
         return appreciationRepository.save(appreciation);
     }
 
 
-    public Map<String, Integer> handlingBadge(User user){
+    public Map<String, Integer> handlingBadge(User user) {
         List<Appreciation> appreciations = appreciationRepository.findAllByAppreciatedUser(user);
         System.out.println(appreciations);
-        //List<String> appreciationBadgeList = appreciationRepository.findAllByBadge(appreciations);
         Map<String, Integer> badgeCount = new HashMap();
-        appreciations.forEach(appreciation-> {
-            if(badgeCount.get(appreciation.getBadge().name()) == null) {
+        appreciations.forEach(appreciation -> {
+            if (badgeCount.get(appreciation.getBadge().name()) == null) {
                 badgeCount.put(appreciation.getBadge().name(), 1);
-            }else {
+            } else {
                 badgeCount.put(appreciation.getBadge().name(), badgeCount.get(appreciation.getBadge().name()) + 1);
             }
         });
-        System.out.println(badgeCount);
         return badgeCount;
+    }
+
+    public Integer getTotalPoints(User user) {
+        Map<String, Integer> badgePoints = handlingBadge(user);
+        Integer totalpoints = ((badgePoints.get("gold") * Badge.gold.getWeight()) + (badgePoints.get("silver") * Badge.silver.getWeight()) + (badgePoints.get("bronze") * Badge.silver.getWeight()));
+        return totalpoints;
     }
 
     public Appreciation appreciatedDataToDomainAndUpdatingBadge(AppreciatedData appreciatedData, HttpServletRequest request) {
@@ -58,27 +59,26 @@ public class AppreciationService {
         User appreciatedUser = userService.getById(appreciatedData.getAppreciatedUser());
         appreciation.setAppreciatedUser(appreciatedUser);
 
-        Badge badge=Badge.valueOf(appreciatedData.getBadge());
+        Badge badge = Badge.valueOf(appreciatedData.getBadge());
         appreciation.setBadge(badge);
 
-        if(Objects.nonNull(appreciation.getBadge()) && Badge.gold.equals(appreciation.getBadge())){
-            appreciatedBy.getBadge().setGoldBadge(appreciatedBy.getBadge().getGoldBadge()-1);
+        if (Objects.nonNull(appreciation.getBadge()) && Badge.gold.equals(appreciation.getBadge())) {
+            appreciatedBy.getBadge().setGoldBadge(appreciatedBy.getBadge().getGoldBadge() - 1);
             //userService.save(currentUser);
             userService.save(appreciatedBy);
 
-        }
-        else if(appreciation.getBadge().equals(Badge.silver)){
-            appreciatedBy.getBadge().setSilverBadge(appreciatedBy.getBadge().getSilverBadge()-1);
+        } else if (Objects.nonNull(appreciation.getBadge()) && Badge.silver.equals(appreciation.getBadge())) {
+            appreciatedBy.getBadge().setSilverBadge(appreciatedBy.getBadge().getSilverBadge() - 1);
+            userService.save(appreciatedBy);
+        } else {
+            appreciatedBy.getBadge().setBronzeBadge(appreciatedBy.getBadge().getBronzeBadge() - 1);
             userService.save(appreciatedBy);
         }
-        else {
-            appreciatedBy.getBadge().setBronzeBadge(appreciatedBy.getBadge().getBronzeBadge()-1);
-            userService.save(appreciatedBy);
-        }
-       // userService.save(currentUser);
-
         appreciation.setKarma(appreciatedData.getKarma());
-        appreciation.setKarmaReason(appreciatedData.getKarmaReason());
+        System.out.println("appreciated data is********" + appreciatedData.getReason());
+        appreciation.setReason(appreciatedData.getReason());
+
+        System.out.println("appreciation details" + appreciation);
         return appreciation;
     }
 
