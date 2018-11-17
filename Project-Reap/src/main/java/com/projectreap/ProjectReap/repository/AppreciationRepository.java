@@ -12,4 +12,5 @@ public interface AppreciationRepository extends JpaRepository<Appreciation, Inte
 
     List<Appreciation> findAllByAppreciatedUser(User user);
 
+
 }

@@ -1,5 +1,6 @@
 package com.projectreap.ProjectReap.controller;
 
+import com.projectreap.ProjectReap.entity.Appreciation;
 import com.projectreap.ProjectReap.entity.User;
 import com.projectreap.ProjectReap.enums.Role;
 import com.projectreap.ProjectReap.pojo.AppreciatedData;
@@ -17,8 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,11 +144,13 @@ public class UserController implements ErrorController {
     }
 
     @GetMapping("/admin/dashboard")
-    public String getAdminDashboard(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+    public String getAdminDashboard(HttpServletRequest request, RedirectAttributes redirectAttributes,Model model) {
         User currentUser = (User) request.getSession().getAttribute("user");
 
         if (currentUser != null) {
             if (currentUser.getRole().equals(Role.ADMIN.getValue())) {
+                model.addAttribute("WallofFameList",appreciationService.findAll());
+
                 return "adminDashboard";
             } else {
                 return "redirect:/user/dashboard";
@@ -255,5 +260,31 @@ public class UserController implements ErrorController {
     @Override
     public String getErrorPath() {
         return path;
+    }
+
+
+    @RequestMapping(value = "/downloadCSV")
+    public void downloadCSV(HttpServletResponse response) throws IOException {
+
+        String csvFileName = "userList.csv";
+
+        response.setContentType("text/csv");
+
+        List<Appreciation> appreciatedUserList = appreciationService.findAll();
+
+        // uses the Super CSV API to generate CSV data from the model data
+//        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
+//                CsvPreference.STANDARD_PREFERENCE);
+//
+//        String[] header = { "Id", "AppreciatedUser", "Karma", "Reason",
+//                "Appreciated By", "Badge" };
+//
+//        csvWriter.writeHeader(header);
+//
+        for (Appreciation appreciation : appreciatedUserList) {
+//            csvWriter.write(aBook, header);
+        }
+//
+//        csvWriter.close();
     }
 }

@@ -23,14 +23,15 @@
         <div class="col-lg-9 col-md-9 recognise">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <img th:src="@{'/images/star.png'}" alt="">
+                    <img th:src="@{'/images/star.png'}" alt="">
                     <h3>Recognize Newer</h3>
                 </div>
 
                 <div class="panel-body">
                     <div class="row">
 
-                        <form th:action="@{'/appreciation'}" id="recognize-submit" th:Object="${appreciatedData}" method="post" >
+                        <form th:action="@{'/appreciation'}" id="recognize-submit" th:Object="${appreciatedData}"
+                              method="post">
 
                             <div class="col-lg-4 col-md-4 ">
                                 <input type="search" class="select-newer"
@@ -42,13 +43,13 @@
                                 </span>
 
                             </div>
-                            <input type="hidden" name="appreciatedBy" id="appreciatedUser" th:field="*{appreciatedUser}">
-
-                            <!--<div id="log"></div>-->
+                            <input type="hidden" name="appreciatedBy" id="appreciatedUser"
+                                   th:field="*{appreciatedUser}">
 
                             <div class="col-lg-3 col-md-3">
 
-                                <select class="form-control" required="required" id="select-badge" th:field="*{badge}" th:each="user,iterStat:${currentUser}">
+                                <select class="form-control" required="required" id="select-badge" th:field="*{badge}"
+                                        th:each="user,iterStat:${currentUser}">
                                     <option value="">Select Badge</option>
                                     <option value="gold">
                                         <a th:href="@{'#'}" title="Gold">
@@ -83,28 +84,33 @@
 
                             <div class="col-lg-4 col-md-4 ">
 
-                                <select class="form-control" required="required"  id="karma" th:field="*{karma}">
+                                <select class="form-control" required="required" id="karma" th:field="*{karma}">
                                     <option value="">Select a Karma/Core Value</option>
                                     <option value="Extra Miler">Karma: Extra Miler</option>
                                     <option value="Knowledge Sharing">Karma: Knowledge Sharing</option>
                                     <option value="Mentorship">Karma: Mentorship</option>
                                     <option value="Pat on the back">Karma: Pat on the back</option>
                                     <option value="Customer Delight">Karma: Customer Delight</option>
-                                    <option value="Continuous Learning and Improvement">Core Value: Continuous Learning and Improvement</option>
+                                    <option value="Continuous Learning and Improvement">Core Value: Continuous Learning
+                                        and Improvement
+                                    </option>
                                     <option value="Contribution">Core Value: Contribution</option>
                                     <option value="Diligence">Core Value: Diligence</option>
                                     <option value="Empathy">Core Value: Empathy</option>
-                                    <option value="Openness to Feedback and Change">Core Value: Openness to Feedback and Change</option>
+                                    <option value="Openness to Feedback and Change">Core Value: Openness to Feedback and
+                                        Change
+                                    </option>
                                     <option value="Responsible Freedom">Core Value: Responsible Freedom</option>
                                 </select>
 
                             </div>
 
 
-                            <div id="karmaReason" class="col-lg-12 col-md-12 karma-description" th:field="*{reason}" >
-                                <label >Reason</label>:
+                            <div id="karmaReason" class="col-lg-12 col-md-12 karma-description" th:field="*{reason}">
+                                <label>Reason</label>:
                                 <div class="displayStyle display" th:value="*{reason}">
-                                    <h5 id="selectKarma" style="border: 1px solid black;padding: 1%;" >Please select a karma/core value first.....</h5>
+                                    <h5 id="selectKarma" style="border: 1px solid black;padding: 1%;">Please select a
+                                        karma/core value first.....</h5>
 
                                     <div id="karma1" style="display: none">
                                         <label>Please select any one of the following, as applicable:</label>
@@ -114,9 +120,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_41"><input type="checkbox" name="indicative_41"
                                                                               data-text="You went above and beyond the call of duty when_____________________. Your going extra mile helped create value for client."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_41">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_41">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You went above and beyond the call of duty when_____________________. Your going extra mile
                             helped create value for client.
                         </span>
@@ -126,9 +134,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_42"><input type="checkbox" name="indicative_42"
                                                                               data-text="You went above and beyond the call of duty when _____________________. Your going extra mile helped meet the dead lines."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_42">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_42">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You went above and beyond the call of duty when _____________________. Your going extra
                             mile helped meet the dead lines.
                         </span>
@@ -138,9 +148,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_43"><input type="checkbox" name="indicative_43"
                                                                               data-text="You went above and beyond the call of duty when _____________________. Your going extra mile helped deliver quality work."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_43">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_43">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You went above and beyond the call of duty when _____________________. Your going extra
                             mile helped deliver quality work.
                         </span>
@@ -150,9 +162,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_44"><input type="checkbox" name="indicative_44"
                                                                               data-text="You went above and beyond the call of duty when_____________________. Your going extra mile helped improved your teams performance."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_44">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_44">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You went above and beyond the call of duty when_____________________. Your going extra mile
                             helped improved your teams performance.
                         </span>
@@ -162,9 +176,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_45"><input type="checkbox" name="indicative_45"
                                                                               data-text="You went above and beyond the call of duty when _____________________. Your going extra mile helped maintain a happy workplace/team culture/friendly environment."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_45">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_45">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You went above and beyond the call of duty when _____________________. Your going extra
                             mile helped maintain a happy workplace/team culture/friendly environment.
                         </span>
@@ -173,9 +189,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_56"><input type="checkbox" name="indicative_56"
-                                                                              data-text="Add your own comments." class="reason-checkbox" style="height: 15px" id="indicative_56">
+                                                                              data-text="Add your own comments."
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_56">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Add your own comments.
                         </span>
                                         </div>
@@ -189,9 +208,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_36"><input type="checkbox" name="indicative_36"
                                                                               data-text="The session you conducted on the Topic ______, on <date> was really interesting and helpful/thought provoking. You presented complex ideas in a simple way by explaining ________________________."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_36">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_36">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             The session you conducted on the Topic ______, on &lt;date&gt; was really interesting and
                             helpful/thought provoking. You presented complex ideas in a simple way by explaining
                             ________________________.
@@ -202,9 +223,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_37"><input type="checkbox" name="indicative_37"
                                                                               data-text="The session you conducted on the Topic ______, on <date> was really interesting and helpful/thought provoking. Your session really helped me apply the knowledge on the job. Referring to ________________."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_37">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_37">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             The session you conducted on the Topic ______, on &lt;date&gt; was really interesting and
                             helpful/thought provoking. Your session really helped me apply the knowledge on the job.
                             Referring to ________________.
@@ -215,9 +238,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_38"><input type="checkbox" name="indicative_38"
                                                                               data-text="The session you conducted on the Topic ______, on <date> was really interesting and helpful/thought provoking. Your session was truly worth the time I devoted. I really liked the way you presented the application aspect of the concept of __________."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_38">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_38">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             The session you conducted on the Topic ______, on &lt;date&gt; was really interesting and
                             helpful/thought provoking. Your session was truly worth the time I devoted. I really liked
                             the way you presented the application aspect of the concept of __________.
@@ -228,9 +253,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_39"><input type="checkbox" name="indicative_39"
                                                                               data-text="The session you conducted on the Topic ______, on <date> was really interesting and helpful/thought provoking. <The topic you covered> is a new development which not many people were aware of. You helped us understand the ________________."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_39">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_39">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             The session you conducted on the Topic ______, on &lt;date&gt; was really interesting and
                             helpful/thought provoking. &lt;The topic you covered&gt; is a new development which not
                             many people were aware of. You helped us understand the ________________.
@@ -241,9 +268,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_40"><input type="checkbox" name="indicative_40"
                                                                               data-text="The session you conducted on the Topic ______, on <date> was really interesting and helpful/thought provoking. I really needed help on _________________ Project/Module and your time helped me achieve it."
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_40">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_40">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             The session you conducted on the Topic ______, on &lt;date&gt; was really interesting and
                             helpful/thought provoking. I really needed help on _________________ Project/Module and
                             your time helped me achieve it.
@@ -253,9 +282,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_58"><input type="checkbox" name="indicative_58"
-                                                                              data-text="Add your own comments." class="reason-checkbox" style="height: 15px" id="indicative_58">
+                                                                              data-text="Add your own comments."
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_58">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Add your own comments.
                         </span>
                                         </div>
@@ -269,9 +301,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_29"><input type="checkbox" name="indicative_29"
                                                                               data-text="You have always led us by example, which inspires me a lot. I want to highlight the instance when_________________(Please elaborate)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_29">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_29">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You have always led us by example, which inspires me a lot. I want to highlight the
                             instance when_________________(Please elaborate)
                         </span>
@@ -281,9 +315,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_30"><input type="checkbox" name="indicative_30"
                                                                               data-text="I want to recognize you for all the guidance provided in the project - ____________.(Please elaborate)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_30">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_30">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I want to recognize you for all the guidance provided in the project - ____________.(Please
                             elaborate)
                         </span>
@@ -293,9 +329,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_31"><input type="checkbox" name="indicative_31"
                                                                               data-text="You make tough tasks seem simple, workable and achievable. Your help during project/situation __________________(Please elaborate)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_31">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_31">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You make tough tasks seem simple, workable and achievable. Your help during
                             project/situation __________________(Please elaborate)
                         </span>
@@ -305,9 +343,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_34"><input type="checkbox" name="indicative_34"
                                                                               data-text="Your guidance in shaping up my career and helping me figure out my long term goals has been tremendous. Through you, I learnt________________(Please elaborate)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_34">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_34">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your guidance in shaping up my career and helping me figure out my long term goals has been
                             tremendous. Through you, I learnt________________(Please elaborate)
                         </span>
@@ -317,9 +357,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_35"><input type="checkbox" name="indicative_35"
                                                                               data-text="Working with you is like consistently having a friend who has guided me throughout. I want to share the incidence when you ___________________(Please elaborate)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_35">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_35">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Working with you is like consistently having a friend who has guided me throughout. I want
                             to share the incidence when you ___________________(Please elaborate)
                         </span>
@@ -329,9 +371,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_59"><input type="checkbox" name="indicative_59"
                                                                               data-text="Your personality inspires me. Specially the way you _______________ (Please elaborate)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_59">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_59">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your personality inspires me. Specially the way you _______________ (Please elaborate)
                         </span>
                                         </div>
@@ -340,9 +384,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_61"><input type="checkbox" name="indicative_61"
                                                                               data-text="Thanks for all the motivation/encouragement. I cannot forget the time when I was stuck/low and you helped me by ___________________(Please elaborate)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_61">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_61">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thanks for all the motivation/encouragement. I cannot forget the time when I was stuck/low
                             and you helped me by ___________________(Please elaborate)
                         </span>
@@ -351,9 +397,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_62"><input type="checkbox" name="indicative_62"
-                                                                              data-text="Add your own comments" class="reason-checkbox" style="height: 15px" id="indicative_62">
+                                                                              data-text="Add your own comments"
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_62">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Add your own comments
                         </span>
                                         </div>
@@ -368,9 +417,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_51"><input type="checkbox" name="indicative_51"
                                                                               data-text="You deserve a pat on the back for _______________________________. (Please mention the incident/any particular contribution you want to highlight.)"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_51">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_51">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You deserve a pat on the back for _______________________________. (Please mention the
                             incident/any particular contribution you want to highlight.)
                         </span>
@@ -386,9 +437,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_63"><input type="checkbox" name="indicative_63"
                                                                               data-text="Kudos to you for exceptional work on <Project Name> for <client name>. The client has appreciated you by writing to us. In their words &quot;(As mentioned by client in the mail)&quot;"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_63">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_63">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Kudos to you for exceptional work on &lt;Project Name&gt; for &lt;client name&gt;. The
                             client has appreciated you by writing to us. In their words "(As mentioned by client in the
                             mail)"
@@ -399,9 +452,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_64"><input type="checkbox" name="indicative_64"
                                                                               data-text="Kudos to you for exceptional work on <Project Name> for <client name>. The client has appreciated you and mentioned that “As mentioned by client verbally”"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_64">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_64">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Kudos to you for exceptional work on &lt;Project Name&gt; for &lt;client name&gt;. The
                             client has appreciated you and mentioned that “As mentioned by client verbally”
                         </span>
@@ -417,9 +472,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_71"><input type="checkbox" name="indicative_71"
                                                                               data-text="You have scaled up tremendously. Would like to highlight your improvement in ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_71">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_71">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You have scaled up tremendously. Would like to highlight your improvement in ______________
                         </span>
                                         </div>
@@ -428,9 +485,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_72"><input type="checkbox" name="indicative_72"
                                                                               data-text="You have mastered in ______________through continuous learning. Would like to highlight that ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_72">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_72">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             You have mastered in ______________through continuous learning. Would like to highlight
                             that ______________
                         </span>
@@ -440,9 +499,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_73"><input type="checkbox" name="indicative_73"
                                                                               data-text="I want to appreciate your efforts for taking all challenges as learning opportunities. Especially the instance when ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_73">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_73">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I want to appreciate your efforts for taking all challenges as learning opportunities.
                             Especially the instance when ______________
                         </span>
@@ -452,9 +513,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_74"><input type="checkbox" name="indicative_74"
                                                                               data-text="Appreciate your efforts in improving yourself by completing a LEAP Course of ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_74">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_74">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Appreciate your efforts in improving yourself by completing a LEAP Course of ______________
                         </span>
                                         </div>
@@ -463,9 +526,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_75"><input type="checkbox" name="indicative_75"
                                                                               data-text="Would like to appreciate your pro-activeness towards learning. Would want to mention the instance when ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_75">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_75">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Would like to appreciate your pro-activeness towards learning. Would want to mention the
                             instance when ______________
                         </span>
@@ -475,9 +540,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_76"><input type="checkbox" name="indicative_76"
                                                                               data-text="I would like to recognize you for taking the Knowledge sharing/Knowledge Meet session ______________. The Session helped me by ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_76">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_76">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I would like to recognize you for taking the Knowledge sharing/Knowledge Meet session
                             ______________. The Session helped me by ______________
                         </span>
@@ -487,9 +554,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_77"><input type="checkbox" name="indicative_77"
                                                                               data-text="Congratulations for doing a POC on ______________. This helped us by ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_77">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_77">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Congratulations for doing a POC on ______________. This helped us by ______________
                         </span>
                                         </div>
@@ -498,9 +567,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_78"><input type="checkbox" name="indicative_78"
                                                                               data-text="Congratulations for setting up and raising benchmarks each time. Would want to highlight the recent instance when ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_78">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_78">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Congratulations for setting up and raising benchmarks each time. Would want to highlight
                             the recent instance when ______________
                         </span>
@@ -516,9 +587,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_79"><input type="checkbox" name="indicative_79"
                                                                               data-text="I would like to recognize you for your contribution in ______________. This has helped in ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_79">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_79">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I would like to recognize you for your contribution in ______________. This has helped in
                             ______________
                         </span>
@@ -528,9 +601,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_80"><input type="checkbox" name="indicative_80"
                                                                               data-text="I would like to recognize your contribution towards the recent Blog/plug-in/white paper you wrote. It helped me/It was ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_80">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_80">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I would like to recognize your contribution towards the recent Blog/plug-in/white paper you
                             wrote. It helped me/It was ______________
                         </span>
@@ -540,9 +615,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_81"><input type="checkbox" name="indicative_81"
                                                                               data-text="Your contribution towards helping your peers learn and grow is tremendous. You supported in their learning by ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_81">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_81">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your contribution towards helping your peers learn and grow is tremendous. You supported in
                             their learning by ______________
                         </span>
@@ -552,9 +629,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_82"><input type="checkbox" name="indicative_82"
                                                                               data-text="Your contribution towards helping me learn and grow is tremendous. I would like to highlight the instance when ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_82">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_82">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your contribution towards helping me learn and grow is tremendous. I would like to
                             highlight the instance when ______________
                         </span>
@@ -564,9 +643,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_83"><input type="checkbox" name="indicative_83"
                                                                               data-text="Your contribution towards improving ______________ is noteworthy. You helped by ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_83">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_83">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your contribution towards improving ______________ is noteworthy. You helped by
                             ______________
                         </span>
@@ -576,9 +657,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_84"><input type="checkbox" name="indicative_84"
                                                                               data-text="Your contribution in providing value to client is much appreciated. You wowed the customer by ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_84">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_84">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your contribution in providing value to client is much appreciated. You wowed the customer
                             by ______________
                         </span>
@@ -593,10 +676,13 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_85"><input type="checkbox" name="indicative_85"
-                                                                              data-text="Appreciate your hard work in ______________" class="reason-checkbox" style="height: 15px"
+                                                                              data-text="Appreciate your hard work in ______________"
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px"
                                                                               id="indicative_85">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Appreciate your hard work in ______________
                         </span>
                                         </div>
@@ -604,10 +690,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_86"><input type="checkbox" name="indicative_86"
-                                                                              data-text="Appreciate you for your diligence in ______________" class="reason-checkbox"
+                                                                              data-text="Appreciate you for your diligence in ______________"
+                                                                              class="reason-checkbox"
                                                                               style="height: 15px" id="indicative_86">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Appreciate you for your diligence in ______________
                         </span>
                                         </div>
@@ -615,10 +703,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_87"><input type="checkbox" name="indicative_87"
-                                                                              data-text="Thank you for owning and delivering ______________" class="reason-checkbox"
+                                                                              data-text="Thank you for owning and delivering ______________"
+                                                                              class="reason-checkbox"
                                                                               style="height: 15px" id="indicative_87">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for owning and delivering ______________
                         </span>
                                         </div>
@@ -627,9 +717,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_88"><input type="checkbox" name="indicative_88"
                                                                               data-text="Appreciate you for being thorough and diligent in everything you do. Would like to highlight the instance when ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_88">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_88">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Appreciate you for being thorough and diligent in everything you do. Would like to
                             highlight the instance when ______________
                         </span>
@@ -639,9 +731,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_89"><input type="checkbox" name="indicative_89"
                                                                               data-text="Your strive for excellence is noteworthy. Would like to highlight the instance when ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_89">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_89">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your strive for excellence is noteworthy. Would like to highlight the instance when
                             ______________
                         </span>
@@ -655,10 +749,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_90"><input type="checkbox" name="indicative_90"
-                                                                              data-text="I would like to acknowledge your kind gesture of ______________" class="reason-checkbox"
+                                                                              data-text="I would like to acknowledge your kind gesture of ______________"
+                                                                              class="reason-checkbox"
                                                                               style="height: 15px" id="indicative_90">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I would like to acknowledge your kind gesture of ______________
                         </span>
                                         </div>
@@ -667,9 +763,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_91"><input type="checkbox" name="indicative_91"
                                                                               data-text="Thank you for being understanding in my tough situation. You gesture of ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_91">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_91">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for being understanding in my tough situation. You gesture of ______________
                         </span>
                                         </div>
@@ -678,9 +776,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_92"><input type="checkbox" name="indicative_92"
                                                                               data-text="Thank you for going an extra mile and listening me out patiently, when I was ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_92">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_92">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for going an extra mile and listening me out patiently, when I was ______________
                         </span>
                                         </div>
@@ -688,10 +788,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_93"><input type="checkbox" name="indicative_93"
-                                                                              data-text="Thank you for understanding my perspective in ______________" class="reason-checkbox"
+                                                                              data-text="Thank you for understanding my perspective in ______________"
+                                                                              class="reason-checkbox"
                                                                               style="height: 15px" id="indicative_93">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for understanding my perspective in ______________
                         </span>
                                         </div>
@@ -700,9 +802,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_94"><input type="checkbox" name="indicative_94"
                                                                               data-text="Thank you always for encouraging me to speak my mind. You help by ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_94">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_94">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you always for encouraging me to speak my mind. You help by ______________
                         </span>
                                         </div>
@@ -711,9 +815,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_95"><input type="checkbox" name="indicative_95"
                                                                               data-text="Thank you for being compassionate towards me. You have helped me ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_95">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_95">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for being compassionate towards me. You have helped me ______________
                         </span>
                                         </div>
@@ -728,9 +834,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_96"><input type="checkbox" name="indicative_96"
                                                                               data-text="I appreciate you for sharing feedback with me regularly. This has helped me in _______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_96">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_96">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I appreciate you for sharing feedback with me regularly. This has helped me in
                             _______________
                         </span>
@@ -740,9 +848,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_97"><input type="checkbox" name="indicative_97"
                                                                               data-text="Your nature of expressing your opinion and allowing others to do the same is much appreciated. Due to this I was/we were______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_97">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_97">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your nature of expressing your opinion and allowing others to do the same is much
                             appreciated. Due to this I was/we were______________
                         </span>
@@ -752,9 +862,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_98"><input type="checkbox" name="indicative_98"
                                                                               data-text="I want to recognize you for being open to feedback. I appreciate this because ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_98">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_98">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I want to recognize you for being open to feedback. I appreciate this because
                             ______________
                         </span>
@@ -764,9 +876,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_99"><input type="checkbox" name="indicative_99"
                                                                               data-text="Thank you for sharing feedback candidly. This has helped me by ______________"
-                                                                              class="reason-checkbox" style="height: 15px" id="indicative_99">
+                                                                              class="reason-checkbox"
+                                                                              style="height: 15px" id="indicative_99">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for sharing feedback candidly. This has helped me by ______________
                         </span>
                                         </div>
@@ -775,9 +889,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_100"><input type="checkbox" name="indicative_100"
                                                                                data-text="Thank you for being open to share your feedback. This has helped me by ______________"
-                                                                               class="reason-checkbox" style="height: 15px" id="indicative_100">
+                                                                               class="reason-checkbox"
+                                                                               style="height: 15px" id="indicative_100">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for being open to share your feedback. This has helped me by ______________
                         </span>
                                         </div>
@@ -786,9 +902,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_101"><input type="checkbox" name="indicative_101"
                                                                                data-text="Your openness to feedback has helped improve the way we work specially the instance when ______________"
-                                                                               class="reason-checkbox" style="height: 15px" id="indicative_101">
+                                                                               class="reason-checkbox"
+                                                                               style="height: 15px" id="indicative_101">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Your openness to feedback has helped improve the way we work specially the instance when
                             ______________
                         </span>
@@ -804,9 +922,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_102"><input type="checkbox" name="indicative_102"
                                                                                data-text="I would like to appreciate you for showing responsible freedom. Would like to highlight the instance when ______________"
-                                                                               class="reason-checkbox" style="height: 15px" id="indicative_102">
+                                                                               class="reason-checkbox"
+                                                                               style="height: 15px" id="indicative_102">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             I would like to appreciate you for showing responsible freedom. Would like to highlight the
                             instance when ______________
                         </span>
@@ -815,10 +935,12 @@
                                         <div class="row">
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_103"><input type="checkbox" name="indicative_103"
-                                                                               data-text="Kudos to you for doing the right thing, when ______________" class="reason-checkbox"
+                                                                               data-text="Kudos to you for doing the right thing, when ______________"
+                                                                               class="reason-checkbox"
                                                                                style="height: 15px" id="indicative_103">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Kudos to you for doing the right thing, when ______________
                         </span>
                                         </div>
@@ -827,9 +949,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_104"><input type="checkbox" name="indicative_104"
                                                                                data-text="Thank you for Fixing/improving/starting ______________, voluntarily. You took charge of ______________"
-                                                                               class="reason-checkbox" style="height: 15px" id="indicative_104">
+                                                                               class="reason-checkbox"
+                                                                               style="height: 15px" id="indicative_104">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for Fixing/improving/starting ______________, voluntarily. You took charge of
                             ______________
                         </span>
@@ -839,9 +963,11 @@
                         <span class="col-lg-1 col-md-1" style="padding-right: 0px">
                             <input type="hidden" name="_indicative_105"><input type="checkbox" name="indicative_105"
                                                                                data-text="Thank you for taking charge of ______________, even when it was beyond the area of work. You helped us by ______________"
-                                                                               class="reason-checkbox" style="height: 15px" id="indicative_105">
+                                                                               class="reason-checkbox"
+                                                                               style="height: 15px" id="indicative_105">
                         </span>
-                                            <span class="col-lg-11 col-md-11" style="padding-left: 0px;vertical-align: middle">
+                                            <span class="col-lg-11 col-md-11"
+                                                  style="padding-left: 0px;vertical-align: middle">
                             Thank you for taking charge of ______________, even when it was beyond the area of work.
                             You helped us by ______________
                         </span>
@@ -854,12 +980,12 @@
 
 
                             <div class="panel-footer recognize-button ">
-                                <!--<div class="recognize-button">-->
+
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" style="float: right">Recognize</button>
+                                    <button type="submit" class="btn btn-primary" style="float: right">Recognize
+                                    </button>
                                 </div>
 
-                                <!--<input class="btn btn-primary" type="submit" name="submit" value="Recognize" class="recognize" id="submit">-->
 
                             </div>
                         </form>
@@ -901,9 +1027,6 @@
                                     <td th:text="${mapEntry.key}">hey</td>
                                     <td th:text="${mapEntry.value}"></td>
 
-                                    <!--<td th:text="${user.badge.goldBadge}"></td>-->
-                                    <!--<td th:text="${user.badge.silverBadge}"></td>-->
-                                    <!--<td th:text="${user.badge.bronzeBadge}"></td>-->
                                 </tr>
                             </table>
 
@@ -999,28 +1122,29 @@
 
 
                         </form>
-                    <div class="col-lg-9 col-sm-12" style="padding-top: 10px" th:each="user,iterStat:${WallofFameList}">
-                        <!--<p th:text="${currentUser.firstName}"></p>-->
-                        <div style="display: inline-block;border: 1px solid black;">
-                            <p th:text="${user.appreciatedUser.firstName}"></p> has received <p th:text="${user.badge}"></p> From <p th:text="${user.appreciatedBy.firstName}"></p>
-                            <p th:text="${user.karma}"></p>
-                            <p th:text="${user.reason}"></p>
+                        <div class="col-lg-9 col-sm-12" style="padding-top: 10px"
+                             th:each="user,iterStat:${WallofFameList}">
+                            <!--<p th:text="${currentUser.firstName}"></p>-->
+                            <div style="display: inline-block;border: 1px solid black;">
+                                <p th:text="${user.appreciatedUser.firstName}"></p> has received <p
+                                    th:text="${user.badge}"></p> From <p th:text="${user.appreciatedBy.firstName}"></p>
+                                <p th:text="${user.karma}"></p>
+                                <p th:text="${user.reason}"></p>
+                            </div>
+
+
                         </div>
 
-
                     </div>
 
+                    <div class="panel-footer pagination pull-right">
+                        <span class="current-new-color-grid currentStep">1</span>
+                        <a href="#" class="step">2</a>
+                        <a href="#" class="step">3</a>
+                        <a href="#" class="step">4</a>
+                        <a href="#" class="step">5</a>
                     </div>
-                    <div class="panel-footer">
-                        <div class="pagination pull-right">
-                            <span class="current-new-color-grid currentStep">1</span>
-                            <a href="#" class="step">1</a>
-                            <a href="#" class="step">2</a>
-                            <a href="#" class="step">3</a>
-                            <a href="#" class="step">4</a>
-                            <a href="#" class="step">5</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

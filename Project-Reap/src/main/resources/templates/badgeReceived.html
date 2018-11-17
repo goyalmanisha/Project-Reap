@@ -80,27 +80,18 @@
                                             All (0)
                                         </a>
                                     </li>
-                                    <li role="presentation" class="" id="badges_shared">
-                                        <a href="#" role="tab">
-                                            Badges Shared (0)
-                                        </a>
-                                    </li>
+
                                     <li role="presentation" class="" id="badges_received">
-                                        <a href="badgeReceived.html" role="tab">
-                                            Badge Received(0)
+                                        <a href="#" role="tab">
+                                            Badges Received (0)
                                         </a>
+                                        <p th:each="mapEntry : ${badgeCount}">
+                                            <td th:text="${mapEntry.key}">hey</td>
+                                            <td th:text="${mapEntry.value}"></td>
+
+                                        </p>
                                     </li>
 
-                                    <li role="presentation" class="" id="badges_history">
-                                        <a href="#y" role="tab">
-                                            Badges History
-                                        </a>
-                                    </li>
-
-
-                                    <li role="presentation" class="" id="points_redeemed">
-                                        <a href="#" role="tab">Points redeemed</a>
-                                    </li>
 
                                 </ul>
 

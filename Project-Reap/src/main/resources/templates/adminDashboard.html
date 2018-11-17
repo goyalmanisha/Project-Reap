@@ -14,11 +14,42 @@
 <header th:insert="layouts/common.html :: header"></header>
 
 <div class="admin-dashboard-section">
-        This is admin dashboard.
+    <strong>This is admin dashboard.</strong>
         <br>
         <h3>Click this to see the users</h3>
         <a th:href="@{/admin/users}" class="btn btn-success">Userlist</a>
 
+        <a th:href="@{/downloadCSV}" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-download-alt"></span> Download
+        </a>
+        <div id="users">
+            <table th:cellpadding="30px" th:cellspacing="30px">
+
+                <tr style="background-color: lightcyan">
+                    <th>Id</th>
+                    <th>Appreciated By User</th>
+                    <th>Appreciated To User</th>
+                    <th>Badge</th>
+                    <th>Karma</th>
+                    <th>Karma Reason</th>
+
+
+
+                </tr>
+                <tr class="userdata" th:each="user, iterStat:${WallofFameList}"  th:style="${iterStat.odd}? 'background: #f0f0f2;' : 'background: #ffffff;'">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.appreciatedBy.firstName}"></td>
+
+                    <td th:text="${user.appreciatedUser.firstName}"></td>
+                    <td th:text="${user.badge}"></td>
+                    <td th:text="${user.karma}"></td>
+                    <td th:text="${user.reason}"></td>
+
+
+                </tr>
+
+            </table>
+        </div>
 </div>
 
 <footer th:insert="layouts/common.html :: footer"></footer>

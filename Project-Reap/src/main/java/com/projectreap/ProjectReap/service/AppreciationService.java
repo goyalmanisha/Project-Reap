@@ -56,8 +56,6 @@ public class AppreciationService {
 //	                .forEachRemaining(key -> System.out.println(key + "=" + handlingBadge(user).get(key)));
 //    }
 
-
-
     public Integer getTotalPoints(User user) {
         Map<String, Integer> badgePoints = handlingBadge(user);
 
@@ -80,7 +78,6 @@ public class AppreciationService {
 
         if (Objects.nonNull(appreciation.getBadge()) && Badge.gold.equals(appreciation.getBadge())) {
             appreciatedBy.getBadge().setGoldBadge(appreciatedBy.getBadge().getGoldBadge() - 1);
-            //userService.save(currentUser);
             userService.save(appreciatedBy);
 
         } else if (Objects.nonNull(appreciation.getBadge()) && Badge.silver.equals(appreciation.getBadge())) {

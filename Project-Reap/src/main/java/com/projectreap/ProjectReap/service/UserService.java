@@ -1,13 +1,19 @@
 package com.projectreap.ProjectReap.service;
 
+import com.projectreap.ProjectReap.entity.Appreciation;
 import com.projectreap.ProjectReap.entity.User;
 import com.projectreap.ProjectReap.entity.UserBadge;
 import com.projectreap.ProjectReap.enums.Role;
+import com.projectreap.ProjectReap.repository.AppreciationRepository;
 import com.projectreap.ProjectReap.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
+import java.awt.print.Book;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +26,7 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+
 
     public User save(User user){
         return userRepository.save(user);
@@ -80,6 +85,7 @@ public class UserService {
     public User getById(Integer id){
        return userRepository.getUserById(id);
     }
+
     /*
      * Setting Default Badge on the basis of role
      * */
@@ -96,4 +102,9 @@ public class UserService {
         }
         return user;
     }
+
+
+
+
+
 }
